@@ -17,6 +17,7 @@ public class Module {
     private ArrayList<Score> scores; 
     
     public Module(String name, String description) {
+        this.scores = new ArrayList<Score>();
         this.name = name; 
         this.description = description; 
     }
@@ -27,10 +28,14 @@ public class Module {
         scores.add(new Score(score, weight)); 
     }
     public double getAverage() {
-        double average; 
+        double average, sumXiFi = 0, sumFi = 0;
         for(Score tempScore : scores) {
-            
+            if(tempScore != null) {
+                sumXiFi += tempScore.getScore() * tempScore.getWeight();
+                sumFi += tempScore.getWeight();
+            }
         }
+        average = Math.round((sumXiFi / sumFi) * 10) / 10.0;
         return average; 
     }
 }
