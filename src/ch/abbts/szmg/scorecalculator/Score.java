@@ -21,12 +21,16 @@ public class Score {
         return score;
     }
     public void setScore(double score) {
-        this.score = score; 
+        if (score >=1 && score <= 6) {
+            this.score = score; 
+        }
     }
     public int getWeight() {
         return weight; 
     }
     public void setWeight(int weight) {
-        this.weight = weight; 
+        if (weight >=1 && weight <= 100) {
+            this.weight = weight; 
+        }
     }
 }

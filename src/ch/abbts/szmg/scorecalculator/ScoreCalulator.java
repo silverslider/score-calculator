@@ -5,6 +5,8 @@
  */
 package ch.abbts.szmg.scorecalculator;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author braymann
@@ -15,7 +17,10 @@ public class ScoreCalulator {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         // Main
-    }
-    
+        ArrayList<Student> students = new ArrayList<Student>();
+        
+        students.add(new Student("Muster", "Max"));
+        
+        System.out.println(students.get(0).getName());
+    }   
 }
