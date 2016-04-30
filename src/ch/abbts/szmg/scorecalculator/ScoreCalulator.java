@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public class ScoreCalulator {
 
     /**
+     * Startet das Programm. Dient in der Testphase als Testklasse bis ein UserInterface zugefügt wurde. 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArrayList<Student> students = new ArrayList<Student>();
-        
-        students.add(new Student("Muster", "Max"));
-        
-        System.out.println(students.get(0).getName());
+        Students myStudents = new Students(); 
+        myStudents.addStudent("Muster", "Monika");
+        System.out.println(myStudents.getStudent("Muster").getName());
+        System.out.println(myStudents.getStudent("Muster").getAverage());
     }   
 }

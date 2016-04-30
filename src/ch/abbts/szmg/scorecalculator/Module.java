@@ -8,7 +8,7 @@ package ch.abbts.szmg.scorecalculator;
 import java.util.ArrayList;
 
 /**
- *
+ * Definiert Module (Fächer). Erzeugt Noten. 
  * @author szobrist
  */
 public class Module {
@@ -21,12 +21,25 @@ public class Module {
         this.name = name; 
         this.description = description; 
     }
+    /**
+     * Gibt den Namen des Moduls zurück. 
+     * @return Name des Moduls. 
+     */
     public String getName() {
         return name; 
     }
+    /** 
+     * Erzeugt eine neue Note mit Gewichtung. 
+     * @param score Notenwert zwischen 1 und 6. 
+     * @param weight Gewichtung der Note von 1 bis 100%. 
+     */
     public void newScore(double score, int weight) {
         scores.add(new Score(score, weight)); 
     }
+    /** 
+     * Berechnet den Notenschnitt eines Moduls und gibt den Notenschnitt zurück. 
+     * @return Notenschnitt Modul. 
+     */
     public double getAverage() {
         double average, sumXiFi = 0, sumFi = 0;
         for(Score tempScore : scores) {

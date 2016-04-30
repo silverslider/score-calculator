@@ -8,7 +8,8 @@ package ch.abbts.szmg.scorecalculator;
 import java.util.ArrayList;
 
 /**
- *
+ * Definiert Semester. 
+ * Erzeugt Module und weist diese dem Semester zu. 
  * @author szobrist
  */
 public class Semester {
@@ -21,12 +22,25 @@ public class Semester {
         this.name = name;
         this.description = description;         
     }
+    /**
+     * Gibt den Namen des Semesters zurück. 
+     * @return Nachname des Semesters. 
+     */
     public String getName() {
         return name; 
     }
+    /**
+     * Erzeugt ein neues Modul (Fach). 
+     * @param name Name des Moduls. 
+     * @param description Beschreibung des Moduls. 
+     */
     public void newModule(String name, String description) {
         modules.add(new Module(name, description));
     }
+    /**
+     * Berechnet den Notenschnitt aller Module. 
+     * @return Notendurchschnitt aller Module. 
+     */
     public double getAverage() {
         double average, sum = 0;
         for(Module tempModule : modules) {
