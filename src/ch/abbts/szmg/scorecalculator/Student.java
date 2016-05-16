@@ -35,5 +35,14 @@ public class Student extends Person {
         return average;
     }
 
+    public void addSemester(String name, String description) {
+        semesters.add(new Semester(name, description));
+    }
+    public Semester getSemester(int index) {
+        Semester tempSemester = semesters.get(index);
+        return tempSemester;
+    }
+    
+
     
 }

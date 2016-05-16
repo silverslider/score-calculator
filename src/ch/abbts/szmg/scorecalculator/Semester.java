@@ -34,8 +34,12 @@ public class Semester {
      * @param name Name des Moduls. 
      * @param description Beschreibung des Moduls. 
      */
-    public void newModule(String name, String description) {
+    public void addModule(String name, String description) {
         modules.add(new Module(name, description));
+    }
+    public Module getModule(int index) {
+        Module tempModule = modules.get(index);
+        return tempModule;
     }
     /**
      * Berechnet den Notenschnitt aller Module. 

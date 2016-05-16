@@ -12,23 +12,22 @@ import java.util.ArrayList;
  * @author szobrist
  */
 public class Students {
+    private static Students instance; 
     private ArrayList<Student> students;
-    static boolean status = false; 
 
-    public Students() {
-        status = true;
-        students = new ArrayList<Student>();
+    private Students() {
+        students = new ArrayList<>();
     }
     /**
      * Instanziert ein Objekt vom Typ Students. Es kann nur ein Objekt Students erzeugt werden. 
      * Dient als Zugriff zur Notenberechnungsstruktur. 
      */
-    /* Für Testphase deaktiviert. Garantiert danach den Zugriff auf Students Klasse damit nur ein Objekt dieses Typs erzeugt werden kann. 
-    public static void createStudents() {
-        if (status == false) {
-            Students allStudents = new Students();
+    public static Students getInstance() {
+        if (instance == null) {
+            instance = new Students();
         }
-    } */
+        return Students.instance;
+    } 
     /**
      * Sucht einen Studenten über dessen Nachname, und gibt das Objekt zurück. 
      * @param nameOfStudent Nachname des Studenten. 
@@ -42,6 +41,10 @@ public class Students {
             }
         }
         return ret;
+    }
+    public Student getStudent(int index) {
+        Student tempStudent = students.get(index);
+        return tempStudent;
     }
     /**
      * Erzeugt ein Objekt des Typs Student. 
