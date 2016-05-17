@@ -38,7 +38,10 @@ public class Semester {
         modules.add(new Module(name, description));
     }
     public Module getModule(int index) {
-        Module tempModule = modules.get(index);
+        Module tempModule = null;
+        if (index < modules.size()) {
+           tempModule = modules.get(index);
+        }
         return tempModule;
     }
     /**

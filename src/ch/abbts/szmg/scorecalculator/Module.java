@@ -33,8 +33,15 @@ public class Module {
      * @param score Notenwert zwischen 1 und 6. 
      * @param weight Gewichtung der Note von 1 bis 100%. 
      */
-    public void newScore(double score, int weight) {
+    public void addScore(double score, int weight) {
         scores.add(new Score(score, weight)); 
+    }
+    public Score getScore(int index) {
+        Score tempScore = null;
+        if (index < scores.size()) {
+            tempScore = scores.get(index);
+        }
+        return tempScore;
     }
     /** 
      * Berechnet den Notenschnitt eines Moduls und gibt den Notenschnitt zurück. 

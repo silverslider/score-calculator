@@ -6,8 +6,6 @@
  */
 package ch.abbts.szmg.scorecalculator;
 
-import java.io.IOException;
-
 /**
  * Main Klasse. Dient dem Programmstart. 
  * @author Simon Zobrist
@@ -15,10 +13,10 @@ import java.io.IOException;
 public class ScoreCalculator {
     /**
      * Startet das Programm Score Calculator. 
+     * @param args
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         StudentsCmd commandline = new StudentsCmd();
         commandline.startCmd();
-        
     }
 }

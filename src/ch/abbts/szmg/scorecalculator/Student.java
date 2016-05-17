@@ -39,7 +39,10 @@ public class Student extends Person {
         semesters.add(new Semester(name, description));
     }
     public Semester getSemester(int index) {
-        Semester tempSemester = semesters.get(index);
+        Semester tempSemester = null;
+        if (index < semesters.size()) {
+            tempSemester = semesters.get(index);
+        }
         return tempSemester;
     }
     
