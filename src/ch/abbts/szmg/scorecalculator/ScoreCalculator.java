@@ -1,33 +1,24 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Die Applikation ScoreCalculator ist eine Notenberechnungssoftware. 
+ * Mit ScoreCalculator können Studenten erfasst und deren Noten verwaltet werden. 
+ * Es können Studenten, Semester, Fächer und Noten erfasst und der jeweilige Notenschnitt berechnet werden. 
+ * Ausserdem kann einem Fasch jeweils ein Dozent zugewiesen werden. 
  */
 package ch.abbts.szmg.scorecalculator;
 
+import java.io.IOException;
+
 /**
- *
- * @author braymann
+ * Main Klasse. Dient dem Programmstart. 
+ * @author Simon Zobrist
  */
 public class ScoreCalculator {
-    public ScoreCalculator() {
-        startCmd();
-    }
-
     /**
-     * Startet das Programm. Dient in der Testphase als Testklasse bis ein UserInterface zugefügt wurde. 
-     * @param args the command line arguments
+     * Startet das Programm Score Calculator. 
      */
-    public static void main(String[] args) {
-        ScoreCalculator Notenrechner = new ScoreCalculator();    
-    }
-    private void startCmd() {
-        Students.getInstance().addStudent("Müller", "Mike");
-        System.out.println(Students.getInstance().getStudent(0).getName());
-        Students.getInstance().getStudent(0).addSemester("WS 2015", "Wintersemester 2015");
-        System.out.println(Students.getInstance().getStudent(0).getSemester(0).getName());
-        Students.getInstance().getStudent(0).getSemester(0).addModule("MAT", "Mathe");
-        System.out.println(Students.getInstance().getStudent(0).getSemester(0).getModule(0).getName());
+    public static void main(String[] args) throws IOException {
+        StudentsCmd commandline = new StudentsCmd();
+        commandline.startCmd();
         
     }
 }

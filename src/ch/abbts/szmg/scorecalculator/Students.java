@@ -43,7 +43,10 @@ public class Students {
         return ret;
     }
     public Student getStudent(int index) {
-        Student tempStudent = students.get(index);
+        Student tempStudent = null;
+        if (index < students.size()) {
+            tempStudent = students.get(index);
+        }
         return tempStudent;
     }
     /**
