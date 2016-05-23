@@ -5,11 +5,13 @@
  */
 package ch.abbts.szmg.scorecalculator;
 
+import java.io.Serializable;
+
 /**
  *
  * @author szobrist
  */
-public class Person {
+public class Person implements Serializable {
     private String name;
     private String preName;
     

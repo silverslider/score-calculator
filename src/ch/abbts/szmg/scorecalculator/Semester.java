@@ -5,6 +5,7 @@
  */
 package ch.abbts.szmg.scorecalculator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * Erzeugt Module und weist diese dem Semester zu. 
  * @author szobrist
  */
-public class Semester {
+public class Semester implements Serializable {
     private String name;
     private String description;
     private ArrayList<Module> modules;

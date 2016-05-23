@@ -7,6 +7,17 @@ package ch.abbts.szmg.scorecalculator;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Beinhaltet das User Interface. 
@@ -45,10 +56,27 @@ public class StudentsCmd {
                     cmd.startCmd();
                     break;
                 case 2:
-                    System.out.println("Datei kann nicht gespeichert werden! \nGrund: Aktion wird nicht unterstützt.");
+                    try {
+                        // System.out.println("Datei kann nicht gespeichert werden! \nGrund: Aktion wird nicht unterstützt.");
+                        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("students.dat"));
+                        oos.writeUnshared(Students.getInstance());
+                        oos.flush();
+                        oos.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(StudentsCmd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     break;
                 case 3:
-                    System.out.println("Datei kann nicht geladen werden! \nGrund: Keine Datei gespeichert.");
+                    // System.out.println("Datei kann nicht geladen werden! \nGrund: Keine Datei gespeichert.");
+                    
+                    try {
+                            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("students.dat"));
+                            Students.setStudents((Students) ois.readObject());
+                            ois.close();
+                            
+                        } catch (IOException | ClassNotFoundException ex) {
+                            Logger.getLogger(StudentsCmd.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     break;
                 case 4: 
                     System.out.println("Programm wird beendet. ");

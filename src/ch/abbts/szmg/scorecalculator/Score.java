@@ -5,11 +5,13 @@
  */
 package ch.abbts.szmg.scorecalculator;
 
+import java.io.Serializable;
+
 /**
  * Definiert Noten. 
  * @author szobrist
  */
-public class Score {
+public class Score implements Serializable {
     private double score; 
     private int weight; 
     

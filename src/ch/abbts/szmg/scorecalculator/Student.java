@@ -5,6 +5,7 @@
  */
 package ch.abbts.szmg.scorecalculator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * Erzeugt Semester und weist diese dem jeweiligen Studenten zu. 
  * @author szobrist
  */
-public class Student extends Person {
+public class Student extends Person implements Serializable{
     private ArrayList<Semester> semesters;
     
     public Student(String name, String preName) {

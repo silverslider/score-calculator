@@ -5,13 +5,14 @@
  */
 package ch.abbts.szmg.scorecalculator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Definiert Module (Fächer). Erzeugt Noten. 
  * @author szobrist
  */
-public class Module {
+public class Module implements Serializable {
     private String name;
     private String description; 
     private ArrayList<Score> scores; 

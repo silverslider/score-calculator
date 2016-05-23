@@ -5,13 +5,14 @@
  */
 package ch.abbts.szmg.scorecalculator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Es können Studenten erzeugt und verwaltet werden. 
  * @author szobrist
  */
-public class Students {
+public class Students implements Serializable {
     private static Students instance; 
     private ArrayList<Student> students;
 
@@ -56,5 +57,8 @@ public class Students {
      */
     public void addStudent(String name, String preName) {
         students.add(new Student(name, preName));
+    }
+    public static void setStudents(Students students) {
+        instance = students;
     }
 }
