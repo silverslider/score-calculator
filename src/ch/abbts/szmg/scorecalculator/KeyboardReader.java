@@ -14,11 +14,8 @@ import java.io.InputStreamReader;
  * @author Simon
  */
 public class KeyboardReader {
-    private final InputStreamReader is = new InputStreamReader(System.in);
-    private final BufferedReader br = new BufferedReader(is);
-
-    public KeyboardReader() {                
-    }
+    private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    
     /**
      * Liest einen Int von der Tastatur ein. 
      * @return Gibt einen Int zurück. 
@@ -42,7 +39,8 @@ public class KeyboardReader {
     public String readString() {
         String line = null;
         try {
-            line = br.readLine();
+            BufferedReader bfr = new BufferedReader(new InputStreamReader(System.in, "ISO-8859-1"));
+            line = bfr.readLine();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
             System.out.println("Ungültige Eingabe! \nGeben Sie eine Ganzzahl ein.");
