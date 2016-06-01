@@ -5,6 +5,7 @@
  * Ausserdem kann einem Fasch jeweils ein Dozent zugewiesen werden. 
  */
 package ch.abbts.szmg.scorecalculator;
+import ch.abbts.szmg.scorecalculator.gui.*;
 
 /**
  * Main Klasse. Dient dem Programmstart. 
@@ -16,7 +17,10 @@ public class ScoreCalculator {
      * @param args
      */
     public static void main(String[] args) {
-        StudentsCmd commandline = new StudentsCmd();
-        commandline.startCmd();
+        /*StudentsCmd commandline = new StudentsCmd();
+        commandline.startCmd();*/
+        
+        new Gui();
+        
     }
 }
