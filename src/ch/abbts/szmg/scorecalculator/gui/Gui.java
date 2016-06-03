@@ -15,14 +15,19 @@ public class Gui extends JFrame {
 
     private MainPanel mainPanel;
     private TopMenuBar topMenuBar;
+    private int frameWidth = 800;
+    private int frameHeight = 400;
     
     // Konstruktor für Gui    
     public Gui() { 
                 
         // MainFrame generieren: Titel, Position und gösse setzen
         setTitle("Score calculator");
-        setLocationRelativeTo(null);
-        setSize(800, 400);
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int screenWidth = gd.getDisplayMode().getWidth();
+        int screenHeight = gd.getDisplayMode().getHeight();
+        setLocation((screenWidth-frameWidth)/2, (screenHeight-frameHeight)/2);
+        setSize(frameWidth,frameHeight);
         setLayout(new BorderLayout());
         setBackground(Color.DARK_GRAY);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Stellt sicher, dass sauber beendet wird.

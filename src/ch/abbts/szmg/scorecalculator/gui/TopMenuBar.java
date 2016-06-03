@@ -18,7 +18,10 @@ public class TopMenuBar extends JMenuBar {
     private JMenuItem menuItem;
     
     public TopMenuBar() {
-        
+        initMenuBar();
+    }    
+    private void initMenuBar() {
+                
         // Menübar erzeugen
         menuBar = new JMenuBar();
         
@@ -29,35 +32,58 @@ public class TopMenuBar extends JMenuBar {
         // Menüeintrag Datei -> Neu
         menuItem = new JMenuItem("Neu");
         menu.add(menuItem);
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Hallo Neu");
+            }
+        });
         
-        Closer listener = new Closer();
-        menuItem.addActionListener(listener);
+        // Menüeintrag Datei -> Speichern
+        menuItem = new JMenuItem("Speichern");
+        menu.add(menuItem);
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Hallo Save");
+            }
+        });
+        // Menüeintrag Datei -> Laden
+        menuItem = new JMenuItem("Laden");
+        menu.add(menuItem);
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Hallo Load");
+            }
+        });
                 
         // Menüeintrag Datei -> schliessen
         menuItem = new JMenuItem("Schliessen");
         menu.add(menuItem);
         
-        menuItem.addActionListener(listener);
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
                 
-        // Menü Bearbeiten
-        menu = new JMenu("Bearbeiten");
+        // Menü Aktion
+        menu = new JMenu("Aktion");
         menuBar.add(menu);
+        
+        // Menüeintrag Aktion -> Student hinzufügen
+        menuItem = new JMenuItem("Student hinzufügen");
+        menu.add(menuItem);
+        
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Hallo Student");
+            }
+        });
         
         add(menuBar);
     }
-    
-    // Actionlistener für schliessen
-    class Closer implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-        }
-    }
-    
-    // windowslistener für schliessen
-    class MyWindowListener extends WindowAdapter {
-        public void windowClosing(WindowEvent e) {
-            System.exit(0);
-        }
-    }
-    
 }
