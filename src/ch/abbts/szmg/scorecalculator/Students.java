@@ -61,4 +61,7 @@ public class Students implements Serializable {
     public static void setStudents(Students students) {
         instance = students;
     }
+    public static void removeStudents() {
+        instance = null;
+    }
 }

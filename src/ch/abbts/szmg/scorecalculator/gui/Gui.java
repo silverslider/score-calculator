@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ch.abbts.szmg.scorecalculator.gui;
+import ch.abbts.szmg.scorecalculator.*;
 import java.awt.*;
 import javax.swing.*;
 
@@ -19,9 +20,17 @@ public class Gui extends JFrame {
     private int frameHeight = 400;
     private static JFrame mainFrame;
     
+    private static Student student;
+    private static Semester semester;
+    private static Module module;
+    
     // Konstruktor für Gui    
     public Gui() { 
-        mainFrame = this;       
+        initGui();
+    }
+    
+    private void initGui() {
+        mainFrame = this;
         // MainFrame generieren: Titel, Position und gösse setzen
         setTitle("Score calculator");
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
@@ -41,10 +50,27 @@ public class Gui extends JFrame {
         setContentPane(mainPanel);
         
         setVisible(true);
-        
-    } // End Constructor
+    }
     
     public static JFrame getMainFrame(){
         return mainFrame;
+    }
+    public static Student getStudent() {
+        return student;
+    }
+    public static void setStudent(Student student) {
+        Gui.student = student;
+    }
+    public static Semester getSemester(String nameOfStudent) {
+        return semester;
+    }
+    public static void setSemester(Semester semester) {
+        Gui.semester = semester;
+    }
+    public static Module getModule() {
+        return module;
+    }
+    public static void setModule(Module module) {
+        Gui.module = module;
     }
 }

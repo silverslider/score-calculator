@@ -17,13 +17,17 @@ public class MainPanel extends JPanel {
     private JButton student;
     
     public MainPanel() {
-        
+        initMainPanel();
+    }
+    private void initMainPanel() {
         // Panel erzeugen und Grösse definieren
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
-        
+        this.addBottomPanel();
+    }
+    private void addBottomPanel() {
         // Buttons erzeugen
-        student = new JButton( "Student hinzufügen");
+        student = new JButton("Student hinzufügen");
         student.setBackground(Color.orange);
         student.addActionListener(new ActionListener() {
             @Override
@@ -39,8 +43,5 @@ public class MainPanel extends JPanel {
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         bottomPanel.add(student);
         add(bottomPanel, BorderLayout.SOUTH);
-        
-        
     }
-    
 }

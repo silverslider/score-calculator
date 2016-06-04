@@ -44,7 +44,7 @@ public class TopMenuBar extends JMenuBar {
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Hallo Neu");
+                Students.removeStudents();
             }
         });
         
@@ -87,7 +87,6 @@ public class TopMenuBar extends JMenuBar {
         // Menüeintrag Datei -> schliessen
         menuItem = new JMenuItem("Schliessen");
         menu.add(menuItem);
-        
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -102,11 +101,13 @@ public class TopMenuBar extends JMenuBar {
         // Menüeintrag Aktion -> Student hinzufügen
         menuItem = new JMenuItem("Student hinzufügen");
         menu.add(menuItem);
-        
         menuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Hallo Student");
+                JFrame topFrame = Gui.getMainFrame();
+                topFrame.setContentPane(new StudentPanel());
+                topFrame.revalidate();
+                topFrame.repaint();
             }
         });
         
