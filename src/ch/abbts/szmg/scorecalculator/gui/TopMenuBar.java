@@ -59,11 +59,11 @@ public class TopMenuBar extends JMenuBar {
                     oos.writeUnshared(Students.getInstance());
                     oos.flush();
                     oos.close();
+                    JOptionPane.showMessageDialog(null, "Daten gespeichert");
                 } catch (IOException ex) {
                     Logger.getLogger(TopMenuBar.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, "Speichern fehlgeschlagen");
                 }
-                JOptionPane.showMessageDialog(null, "Hallo Save");
             }
         });
         // Menüeintrag Datei -> Laden
@@ -76,12 +76,11 @@ public class TopMenuBar extends JMenuBar {
                     ObjectInputStream ois = new ObjectInputStream(new FileInputStream("students.dat"));
                     Students.setStudents((Students) ois.readObject());
                     ois.close();
-
+                    JOptionPane.showMessageDialog(null, "Daten geladen");
                 } catch (IOException | ClassNotFoundException ex) {
                     Logger.getLogger(StudentsCmd.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, "Laden fehlgeschlagen");
                 }
-                JOptionPane.showMessageDialog(null, "Hallo Load");
             }
         });
                 

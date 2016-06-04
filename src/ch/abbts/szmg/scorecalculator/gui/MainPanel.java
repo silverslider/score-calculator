@@ -19,28 +19,27 @@ public class MainPanel extends JPanel {
     public MainPanel() {
         
         // Panel erzeugen und Grösse definieren
-        setBackground(Color.DARK_GRAY);
-        setPreferredSize(new Dimension (800,400));
-        setLayout(new FlowLayout());
+        this.setBackground(Color.DARK_GRAY);
+        this.setLayout(new BorderLayout());
         
         // Buttons erzeugen
-        student = new JButton( "Student");
+        student = new JButton( "Student hinzufügen");
         student.setBackground(Color.orange);
-                       
-        // Buttons zu Panel hinzufügen
-        add(student);
+        student.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame topFrame = Gui.getMainFrame();
+                topFrame.setContentPane(new StudentPanel());
+                topFrame.revalidate();
+                topFrame.repaint();
+            }
+        });
         
+        //Panel für Button
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        bottomPanel.add(student);
+        add(bottomPanel, BorderLayout.SOUTH);
         
-    }
-    
-    class StudentActionListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            JButton button = (JButton)e.getSource();
-            
-            if(button == student) {
-                add(new StudentPanel());
-            } 
-        }
         
     }
     
