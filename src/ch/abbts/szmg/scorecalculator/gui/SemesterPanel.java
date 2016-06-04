@@ -15,7 +15,8 @@ import javax.swing.*;
  */
 public class SemesterPanel extends JPanel {
 
-    private JTextField semester;
+    private JLabel title, nameLabel, descriptionLabel;
+    private JTextField nameText, descriptionText;
     private JButton save, cancel;
     
     public SemesterPanel() {
@@ -25,8 +26,28 @@ public class SemesterPanel extends JPanel {
         // Panel erzeugen und Grösse definieren
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
+        this.addCenterPanel();
         this.addBottomPanel();
     }
+    private void addCenterPanel(){
+        title = new JLabel("Semester");
+        title.setForeground(Color.RED);
+        nameLabel = new JLabel("Name");
+        nameLabel.setForeground(Color.WHITE);
+        nameText = new JTextField(50);
+        descriptionLabel = new JLabel("Beschreibung");
+        descriptionLabel.setForeground(Color.WHITE);
+        descriptionText = new JTextField(50);
+        // Panel für Erfassungsmaske
+        JPanel centerPanel = new JPanel(new FlowLayout());
+        centerPanel.setBackground(Color.DARK_GRAY);
+        centerPanel.add(title);
+        centerPanel.add(nameLabel);
+        centerPanel.add(nameText);
+        centerPanel.add(descriptionLabel);
+        centerPanel.add(descriptionText);
+        add(centerPanel, BorderLayout.CENTER);
+    }    
 
     public void addBottomPanel() {
         // Buttons erzeugen
@@ -35,6 +56,9 @@ public class SemesterPanel extends JPanel {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String name = nameText.getText();
+                String description = descriptionText.getText();
+                
                 JFrame topFrame = Gui.getMainFrame();
                 topFrame.setContentPane(new ModulPanel());
                 topFrame.revalidate();

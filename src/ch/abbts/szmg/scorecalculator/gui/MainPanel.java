@@ -14,6 +14,7 @@ import javax.swing.*;
  */
 public class MainPanel extends JPanel {
     
+    private JLabel title;
     private JButton student;
     
     public MainPanel() {
@@ -23,8 +24,18 @@ public class MainPanel extends JPanel {
         // Panel erzeugen und Grösse definieren
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
+        this.addCenterPanel();
         this.addBottomPanel();
     }
+    private void addCenterPanel(){
+        title = new JLabel("Main");
+        title.setForeground(Color.RED);
+        // Panel für Erfassungsmaske
+        JPanel centerPanel = new JPanel(new FlowLayout());
+        centerPanel.setBackground(Color.DARK_GRAY);
+        centerPanel.add(title);
+        add(centerPanel, BorderLayout.CENTER);
+    }    
     private void addBottomPanel() {
         // Buttons erzeugen
         student = new JButton("Student hinzufügen");

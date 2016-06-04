@@ -15,7 +15,8 @@ import javax.swing.*;
  */
 public class StudentPanel extends JPanel {
     
-    private JTextField preName, lastName;
+    private JLabel title, preNameLabel, nameLabel;
+    private JTextField preNameText, nameText;
     private JButton save, cancel;
     
     public StudentPanel() {
@@ -25,8 +26,28 @@ public class StudentPanel extends JPanel {
         // Panel erzeugen und Grösse definieren
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
+        this.addCenterPanel();
         this.addBottomPanel();
     }
+    private void addCenterPanel(){
+        title = new JLabel("Student");
+        title.setForeground(Color.RED);
+        preNameLabel = new JLabel("Vorname");
+        preNameLabel.setForeground(Color.WHITE);
+        preNameText = new JTextField(50);
+        nameLabel = new JLabel("Name");
+        nameLabel.setForeground(Color.WHITE);
+        nameText = new JTextField(50);
+        // Panel für Erfassungsmaske
+        JPanel centerPanel = new JPanel(new FlowLayout());
+        centerPanel.setBackground(Color.DARK_GRAY);
+        centerPanel.add(title);
+        centerPanel.add(preNameLabel);
+        centerPanel.add(preNameText);
+        centerPanel.add(nameLabel);
+        centerPanel.add(nameText);
+        add(centerPanel, BorderLayout.CENTER);
+    }    
 
     public void addBottomPanel() {
         // Buttons erzeugen
@@ -35,6 +56,9 @@ public class StudentPanel extends JPanel {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String preName = preNameText.getText();
+                String name = nameText.getText();
+                
                 JFrame topFrame = Gui.getMainFrame();
                 topFrame.setContentPane(new SemesterPanel());
                 topFrame.revalidate();
