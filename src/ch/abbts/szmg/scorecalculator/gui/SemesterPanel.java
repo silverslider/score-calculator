@@ -28,10 +28,11 @@ public class SemesterPanel extends JPanel {
         // Panel erzeugen und Grösse definieren
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
+        this.addTopPanel();
         this.addCenterPanel();
         this.addBottomPanel();
     }
-    private void addCenterPanel(){
+    private void addTopPanel(){
         title = new JLabel("Semester");
         title.setForeground(Color.RED);
         nameLabel = new JLabel("Name");
@@ -41,23 +42,31 @@ public class SemesterPanel extends JPanel {
         descriptionLabel.setForeground(Color.WHITE);
         descriptionText = new JTextField(50);
         // Panel für Semester Erfassung
-        JPanel centerPanel = new JPanel();
-        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-        centerPanel.setBackground(Color.DARK_GRAY);
-        centerPanel.add(title);
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+        topPanel.setBackground(Color.DARK_GRAY);
+        topPanel.add(title);
         // Sub Panel pro Zeile
-        JPanel centerSubPanel1 = new JPanel(new FlowLayout());
-        centerSubPanel1.setBackground(Color.DARK_GRAY);
-        centerSubPanel1.add(nameLabel);
-        centerSubPanel1.add(nameText);
-        JPanel centerSubPanel2 = new JPanel(new FlowLayout());
-        centerSubPanel2.setBackground(Color.DARK_GRAY);
-        centerSubPanel2.add(descriptionLabel);
-        centerSubPanel2.add(descriptionText);
-        centerPanel.add(centerSubPanel1);
-        centerPanel.add(centerSubPanel2);
-        add(centerPanel, BorderLayout.CENTER);
+        JPanel topSubPanel1 = new JPanel(new FlowLayout());
+        topSubPanel1.setBackground(Color.DARK_GRAY);
+        topSubPanel1.add(nameLabel);
+        topSubPanel1.add(nameText);
+        JPanel topSubPanel2 = new JPanel(new FlowLayout());
+        topSubPanel2.setBackground(Color.DARK_GRAY);
+        topSubPanel2.add(descriptionLabel);
+        topSubPanel2.add(descriptionText);
+        topPanel.add(topSubPanel1);
+        topPanel.add(topSubPanel2);
+        add(topPanel, BorderLayout.NORTH);
     }    
+    private void addCenterPanel() {
+        JPanel centerPanel = new JPanel(new FlowLayout());
+        centerPanel.setBackground(Color.DARK_GRAY);
+        JLabel text = new JLabel("Hier kommt deine Liste hinein");
+        text.setForeground(Color.BLUE);
+        centerPanel.add(text);
+        add(centerPanel, BorderLayout.CENTER);
+    }
 
     private void addBottomPanel() {
         // Buttons erzeugen

@@ -28,10 +28,11 @@ public class ModulPanel extends JPanel {
         // Panel erzeugen und Grösse definieren
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
+        this.addTopPanel();
         this.addCenterPanel();
         this.addBottomPanel();
         }
-    private void addCenterPanel(){
+    private void addTopPanel(){
         // Komponenten für Notenerfassung
         title = new JLabel("Fach");
         title.setForeground(Color.RED);
@@ -43,15 +44,31 @@ public class ModulPanel extends JPanel {
         weightText = new JTextField(10);
         
         // Panel für Erfassungsmaske
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+        topPanel.setBackground(Color.DARK_GRAY);
+        topPanel.add(title);
+        // Sub Panel pro Zeile
+        JPanel topSubPanel1 = new JPanel(new FlowLayout());
+        topSubPanel1.setBackground(Color.DARK_GRAY);
+        topSubPanel1.add(scoreLabel);
+        topSubPanel1.add(scoreText);
+        JPanel topSubPanel2 = new JPanel(new FlowLayout());
+        topSubPanel2.setBackground(Color.DARK_GRAY);
+        topSubPanel2.add(weightLabel);
+        topSubPanel2.add(weightText);
+        topPanel.add(topSubPanel1);
+        topPanel.add(topSubPanel2);
+        add(topPanel, BorderLayout.NORTH);
+    }    
+    private void addCenterPanel() {
         JPanel centerPanel = new JPanel(new FlowLayout());
         centerPanel.setBackground(Color.DARK_GRAY);
-        centerPanel.add(title);
-        centerPanel.add(scoreLabel);
-        centerPanel.add(scoreText);
-        centerPanel.add(weightLabel);
-        centerPanel.add(weightText);
+        JLabel text = new JLabel("Hier kommt deine Liste hinein");
+        text.setForeground(Color.BLUE);
+        centerPanel.add(text);
         add(centerPanel, BorderLayout.CENTER);
-    }    
+    }
 
         private void addBottomPanel() {
         // Buttons erzeugen

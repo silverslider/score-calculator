@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import sun.font.TextLabel;
 
 /**
  *
@@ -29,6 +30,7 @@ public class StudentPanel extends JPanel {
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
         this.addtopPanel();
+        this.addCenterPanel();
         this.addBottomPanel();
     }
     private void addtopPanel(){
@@ -43,7 +45,7 @@ public class StudentPanel extends JPanel {
         nameText = new JTextField(50);
         // Panel für Student Erfassung
         JPanel topPanel = new JPanel();
-        topPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
         topPanel.setBackground(Color.DARK_GRAY);
         topPanel.add(title);
         //Sub Panel pro Zeile
@@ -56,11 +58,18 @@ public class StudentPanel extends JPanel {
         topSubPanel2.add(nameLabel);
         topSubPanel2.add(nameText);
         // Panels zuordnen
-        centerPanel.add(centerSubPanel1);
-        centerPanel.add(centerSubPanel2);
-        add(centerPanel, BorderLayout.CENTER);
+        topPanel.add(topSubPanel1);
+        topPanel.add(topSubPanel2);
+        add(topPanel, BorderLayout.NORTH);
     }    
-
+    private void addCenterPanel() {
+        JPanel centerPanel = new JPanel(new FlowLayout());
+        centerPanel.setBackground(Color.DARK_GRAY);
+        JLabel text = new JLabel("Hier kommt deine Liste hinein");
+        text.setForeground(Color.BLUE);
+        centerPanel.add(text);
+        add(centerPanel, BorderLayout.CENTER);
+    }
     private void addBottomPanel() {
         // Buttons erzeugen
         save = new JButton("Speichern");
