@@ -65,9 +65,13 @@ public class StudentPanel extends JPanel {
     private void addCenterPanel() {
         JPanel centerPanel = new JPanel(new FlowLayout());
         centerPanel.setBackground(Color.DARK_GRAY);
-        JLabel text = new JLabel("Hier kommt deine Liste hinein");
-        text.setForeground(Color.BLUE);
-        centerPanel.add(text);
+
+        
+        ScrollPane studentList = new ScrollPane();
+        JLabel[] text = new JLabel[100];
+        
+        //studentList.add(text);
+        //centerPanel.add(text);
         add(centerPanel, BorderLayout.CENTER);
     }
     private void addBottomPanel() {
