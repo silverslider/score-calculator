@@ -22,4 +22,11 @@ public class Person implements Serializable {
     public String getName() {
         return name;
     }
+    public String getFullName() {
+        StringBuilder name = new StringBuilder();
+        name.append(this.name);
+        name.append(" ");
+        name.append(this.preName);
+        return name.toString();
+    }
 }

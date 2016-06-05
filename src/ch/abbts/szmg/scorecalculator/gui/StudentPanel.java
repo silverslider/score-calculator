@@ -28,10 +28,10 @@ public class StudentPanel extends JPanel {
         // Panel erzeugen
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
-        this.addCenterPanel();
+        this.addtopPanel();
         this.addBottomPanel();
     }
-    private void addCenterPanel(){
+    private void addtopPanel(){
         // GUI Komponenten erzeugen
         title = new JLabel("Student hinzufügen");
         title.setForeground(Color.RED);
@@ -42,19 +42,19 @@ public class StudentPanel extends JPanel {
         nameLabel.setForeground(Color.WHITE);
         nameText = new JTextField(50);
         // Panel für Student Erfassung
-        JPanel centerPanel = new JPanel();
-        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
-        centerPanel.setBackground(Color.DARK_GRAY);
-        centerPanel.add(title);
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+        topPanel.setBackground(Color.DARK_GRAY);
+        topPanel.add(title);
         //Sub Panel pro Zeile
-        JPanel centerSubPanel1 = new JPanel(new FlowLayout());
-        centerSubPanel1.setBackground(Color.DARK_GRAY);
-        centerSubPanel1.add(preNameLabel);
-        centerSubPanel1.add(preNameText);
-        JPanel centerSubPanel2 = new JPanel(new FlowLayout());
-        centerSubPanel2.setBackground(Color.DARK_GRAY);
-        centerSubPanel2.add(nameLabel);
-        centerSubPanel2.add(nameText);
+        JPanel topSubPanel1 = new JPanel(new FlowLayout());
+        topSubPanel1.setBackground(Color.DARK_GRAY);
+        topSubPanel1.add(preNameLabel);
+        topSubPanel1.add(preNameText);
+        JPanel topSubPanel2 = new JPanel(new FlowLayout());
+        topSubPanel2.setBackground(Color.DARK_GRAY);
+        topSubPanel2.add(nameLabel);
+        topSubPanel2.add(nameText);
         // Panels zuordnen
         centerPanel.add(centerSubPanel1);
         centerPanel.add(centerSubPanel2);
