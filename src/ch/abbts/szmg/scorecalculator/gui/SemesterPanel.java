@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ch.abbts.szmg.scorecalculator.gui;
+import ch.abbts.szmg.scorecalculator.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ public class SemesterPanel extends JPanel {
     private JLabel title, nameLabel, descriptionLabel;
     private JTextField nameText, descriptionText;
     private JButton save, cancel;
+    private Semester semester;
     
     public SemesterPanel() {
         initSemesterPanel();
@@ -38,27 +40,34 @@ public class SemesterPanel extends JPanel {
         descriptionLabel = new JLabel("Beschreibung");
         descriptionLabel.setForeground(Color.WHITE);
         descriptionText = new JTextField(50);
-        // Panel für Erfassungsmaske
-        JPanel centerPanel = new JPanel(new FlowLayout());
+        // Panel für Semester Erfassung
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
         centerPanel.setBackground(Color.DARK_GRAY);
         centerPanel.add(title);
-        centerPanel.add(nameLabel);
-        centerPanel.add(nameText);
-        centerPanel.add(descriptionLabel);
-        centerPanel.add(descriptionText);
+        // Sub Panel pro Zeile
+        JPanel centerSubPanel1 = new JPanel(new FlowLayout());
+        centerSubPanel1.setBackground(Color.DARK_GRAY);
+        centerSubPanel1.add(nameLabel);
+        centerSubPanel1.add(nameText);
+        JPanel centerSubPanel2 = new JPanel(new FlowLayout());
+        centerSubPanel2.setBackground(Color.DARK_GRAY);
+        centerSubPanel2.add(descriptionLabel);
+        centerSubPanel2.add(descriptionText);
+        centerPanel.add(centerSubPanel1);
+        centerPanel.add(centerSubPanel2);
         add(centerPanel, BorderLayout.CENTER);
     }    
 
-    public void addBottomPanel() {
+    private void addBottomPanel() {
         // Buttons erzeugen
         save = new JButton("Speichern");
         save.setBackground(Color.orange);
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String name = nameText.getText();
-                String description = descriptionText.getText();
-                
+                semester = new Semester(nameText.getText() ,descriptionText.getText());
+                Gui.setSemester(semester);
                 JFrame topFrame = Gui.getMainFrame();
                 topFrame.setContentPane(new ModulPanel());
                 topFrame.revalidate();

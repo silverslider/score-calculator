@@ -39,10 +39,22 @@ public class Student extends Person implements Serializable{
     public void addSemester(String name, String description) {
         semesters.add(new Semester(name, description));
     }
+    public void addSemester(Semester semester) {
+        semesters.add(semester);
+    }
     public Semester getSemester(int index) {
         Semester tempSemester = null;
         if (index < semesters.size()) {
             tempSemester = semesters.get(index);
+        }
+        return tempSemester;
+    }
+    public Semester getSemester(Semester semester) {
+        Semester tempSemester = null;
+        for(Semester element : semesters) {
+            if(semesters.equals(element)) {
+                tempSemester = element;
+            }
         }
         return tempSemester;
     }

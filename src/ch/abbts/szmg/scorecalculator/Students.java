@@ -58,6 +58,9 @@ public class Students implements Serializable {
     public void addStudent(String name, String preName) {
         students.add(new Student(name, preName));
     }
+    public void addStudent(Student student) {
+        students.add(student);
+    }
     public static void setStudents(Students students) {
         instance = students;
     }

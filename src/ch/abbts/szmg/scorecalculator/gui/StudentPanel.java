@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ch.abbts.szmg.scorecalculator.gui;
+import ch.abbts.szmg.scorecalculator.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,19 +19,21 @@ public class StudentPanel extends JPanel {
     private JLabel title, preNameLabel, nameLabel;
     private JTextField preNameText, nameText;
     private JButton save, cancel;
+    private Student student;
     
     public StudentPanel() {
         initStudentPanel();
     }
     private void initStudentPanel() {
-        // Panel erzeugen und Grösse definieren
+        // Panel erzeugen
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
         this.addCenterPanel();
         this.addBottomPanel();
     }
     private void addCenterPanel(){
-        title = new JLabel("Student");
+        // GUI Komponenten erzeugen
+        title = new JLabel("Student hinzufügen");
         title.setForeground(Color.RED);
         preNameLabel = new JLabel("Vorname");
         preNameLabel.setForeground(Color.WHITE);
@@ -38,27 +41,37 @@ public class StudentPanel extends JPanel {
         nameLabel = new JLabel("Name");
         nameLabel.setForeground(Color.WHITE);
         nameText = new JTextField(50);
-        // Panel für Erfassungsmaske
-        JPanel centerPanel = new JPanel(new FlowLayout());
+        // Panel für Student Erfassung
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
         centerPanel.setBackground(Color.DARK_GRAY);
         centerPanel.add(title);
-        centerPanel.add(preNameLabel);
-        centerPanel.add(preNameText);
-        centerPanel.add(nameLabel);
-        centerPanel.add(nameText);
+        //Sub Panel pro Zeile
+        JPanel centerSubPanel1 = new JPanel(new FlowLayout());
+        centerSubPanel1.setBackground(Color.DARK_GRAY);
+        centerSubPanel1.add(preNameLabel);
+        centerSubPanel1.add(preNameText);
+        JPanel centerSubPanel2 = new JPanel(new FlowLayout());
+        centerSubPanel2.setBackground(Color.DARK_GRAY);
+        centerSubPanel2.add(nameLabel);
+        centerSubPanel2.add(nameText);
+        // Panels zuordnen
+        centerPanel.add(centerSubPanel1);
+        centerPanel.add(centerSubPanel2);
         add(centerPanel, BorderLayout.CENTER);
     }    
 
-    public void addBottomPanel() {
+    private void addBottomPanel() {
         // Buttons erzeugen
         save = new JButton("Speichern");
         save.setBackground(Color.orange);
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String preName = preNameText.getText();
-                String name = nameText.getText();
-                
+                // Student erzeugen und speichern
+                student = new Student(preNameText.getText(), nameText.getText());
+                Gui.setStudent(student);
+                // Semester Panel laden
                 JFrame topFrame = Gui.getMainFrame();
                 topFrame.setContentPane(new SemesterPanel());
                 topFrame.revalidate();

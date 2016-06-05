@@ -60,12 +60,14 @@ public class Gui extends JFrame {
     }
     public static void setStudent(Student student) {
         Gui.student = student;
+        Students.getInstance().addStudent(student);
     }
     public static Semester getSemester(String nameOfStudent) {
         return semester;
     }
     public static void setSemester(Semester semester) {
         Gui.semester = semester;
+        Students.getInstance().getStudent(Gui.getStudent().getName()).addSemester(semester);
     }
     public static Module getModule() {
         return module;

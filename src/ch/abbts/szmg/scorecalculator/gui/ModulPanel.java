@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package ch.abbts.szmg.scorecalculator.gui;
-import ch.abbts.szmg.scorecalculator.Students;
+import ch.abbts.szmg.scorecalculator.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +19,7 @@ public class ModulPanel extends JPanel {
     private JLabel title, scoreLabel, weightLabel;
     private JTextField scoreText, weightText;
     private JButton save, cancel;
+    private Score score;
     
     public ModulPanel() {
         initModulPanel();
@@ -59,8 +60,7 @@ public class ModulPanel extends JPanel {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int score =  Integer.parseInt(scoreText.getText());
-                int weight = Integer.parseInt(weightText.getText());
+                score = new Score(Double.parseDouble(scoreText.getText()), Integer.parseInt(weightText.getText()));
                 JFrame topFrame = Gui.getMainFrame();
                 topFrame.setContentPane(new ModulPanel());
                 topFrame.revalidate();
