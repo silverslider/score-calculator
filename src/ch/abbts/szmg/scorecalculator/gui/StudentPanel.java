@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import sun.font.TextLabel;
 
 /**
  *
@@ -21,6 +20,10 @@ public class StudentPanel extends JPanel {
     private JTextField preNameText, nameText;
     private JButton save, cancel;
     private Student student;
+    
+    private JPanel[] studentPanels;
+    private JLabel[] studentLabels;
+    private JPanel scrollPanel;
     
     public StudentPanel() {
         initStudentPanel();
@@ -64,14 +67,30 @@ public class StudentPanel extends JPanel {
     }    
     private void addCenterPanel() {
         JPanel centerPanel = new JPanel(new FlowLayout());
-        centerPanel.setBackground(Color.DARK_GRAY);
+        centerPanel.setBackground(Color.DARK_GRAY);   
+        ScrollPane studentList = new ScrollPane(); 
+        studentList.setSize(500, 200);
+        scrollPanel = new JPanel();
+        scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.Y_AXIS));
+        studentPanels = new JPanel[10];
+        studentLabels = new JLabel[10];
+        
 
+             
+        for(int i=0; i < studentPanels.length; i++){
+            try {
+            studentPanels[i] = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            studentLabels[i] = new JLabel();
+            studentLabels[i] = new JLabel(Students.getInstance().getStudent(i).getFullName());
+            studentPanels[i].add(studentLabels[i]);
+            scrollPanel.add(studentPanels[i]);
+            } catch(NullPointerException ex) {
+                break;
+            }
+        }
         
-        ScrollPane studentList = new ScrollPane();
-        JLabel[] text = new JLabel[100];
-        
-        //studentList.add(text);
-        //centerPanel.add(text);
+        studentList.add(scrollPanel);
+        centerPanel.add(studentList);
         add(centerPanel, BorderLayout.CENTER);
     }
     private void addBottomPanel() {

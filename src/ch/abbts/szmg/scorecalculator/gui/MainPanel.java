@@ -24,12 +24,18 @@ public class MainPanel extends JPanel {
         // Panel erzeugen und Grösse definieren
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
+        this.addtopPanel();
         this.addCenterPanel();
         this.addBottomPanel();
     }
-    private void addCenterPanel(){
+    private void addtopPanel() {
+        JPanel topPanel = new JPanel(new FlowLayout());
+        topPanel.setBackground(Color.DARK_GRAY);
         title = new JLabel("Main");
         title.setForeground(Color.RED);
+        add(topPanel, BorderLayout.NORTH);
+    }
+    private void addCenterPanel(){
         // Panel für Erfassungsmaske
         JPanel centerPanel = new JPanel(new FlowLayout());
         centerPanel.setBackground(Color.DARK_GRAY);
