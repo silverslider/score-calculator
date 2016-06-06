@@ -44,6 +44,9 @@ public class Module implements Serializable {
         }
         return tempScore;
     }
+    public ArrayList<Score> getScores() {
+        return scores;
+    }
     /** 
      * Berechnet den Notenschnitt eines Moduls und gibt den Notenschnitt zurück. 
      * @return Notenschnitt Modul. 

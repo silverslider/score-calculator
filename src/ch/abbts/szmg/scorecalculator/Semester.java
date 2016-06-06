@@ -45,6 +45,9 @@ public class Semester implements Serializable {
         }
         return tempModule;
     }
+    public ArrayList<Module> getModules() {
+        return modules;
+    }
     /**
      * Berechnet den Notenschnitt aller Module. 
      * @return Notendurchschnitt aller Module. 

@@ -58,6 +58,9 @@ public class Student extends Person implements Serializable{
         }
         return tempSemester;
     }
+    public ArrayList<Semester> getSemesters() {
+        return semesters;
+    }
     
 
     
