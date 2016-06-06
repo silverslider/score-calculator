@@ -80,7 +80,7 @@ public class StudentPanel extends JPanel {
             JPanel studentPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
             studentPanel.setMaximumSize(new Dimension(nameText.getPreferredSize().width +85, 40));
             JLabel studentLabel = new JLabel(student.getFullName());
-            studentLabel.setPreferredSize(new Dimension((nameText.getPreferredSize().width-150), 20));
+            studentLabel.setPreferredSize(new Dimension((nameText.getPreferredSize().width-200), 20));
             JButton semesterButton = new JButton("Semester");
             semesterButton.addActionListener(new ActionListener() {
                 @Override
