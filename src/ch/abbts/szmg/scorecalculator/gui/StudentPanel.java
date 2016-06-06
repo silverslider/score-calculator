@@ -21,8 +21,6 @@ public class StudentPanel extends JPanel {
     private JButton save, cancel;
     private Student student;
     
-    private JPanel[] studentPanels;
-    private JLabel[] studentLabels;
     private JPanel scrollPanel;
     
     public StudentPanel() {
@@ -40,10 +38,13 @@ public class StudentPanel extends JPanel {
         // GUI Komponenten erzeugen
         title = new JLabel("Student hinzufügen");
         title.setForeground(Color.RED);
+        
         preNameLabel = new JLabel("Vorname");
+        preNameLabel.setPreferredSize(new Dimension(80, 20));
         preNameLabel.setForeground(Color.WHITE);
         preNameText = new JTextField(50);
         nameLabel = new JLabel("Name");
+        nameLabel.setPreferredSize(new Dimension(80, 20));
         nameLabel.setForeground(Color.WHITE);
         nameText = new JTextField(50);
         // Panel für Student Erfassung
@@ -68,25 +69,53 @@ public class StudentPanel extends JPanel {
     private void addCenterPanel() {
         JPanel centerPanel = new JPanel(new FlowLayout());
         centerPanel.setBackground(Color.DARK_GRAY);   
-        ScrollPane studentList = new ScrollPane(); 
-        studentList.setSize(500, 200);
+        ScrollPane studentList = new ScrollPane();
+        studentList.setPreferredSize(new Dimension((nameText.getPreferredSize().width+ 85),200));
         scrollPanel = new JPanel();
         scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.Y_AXIS));
-        studentPanels = new JPanel[10];
-        studentLabels = new JLabel[10];
         
 
              
-        for(int i=0; i < studentPanels.length; i++){
-            try {
-            studentPanels[i] = new JPanel(new FlowLayout(FlowLayout.LEFT));
-            studentLabels[i] = new JLabel();
-            studentLabels[i] = new JLabel(Students.getInstance().getStudent(i).getFullName());
-            studentPanels[i].add(studentLabels[i]);
-            scrollPanel.add(studentPanels[i]);
-            } catch(NullPointerException ex) {
-                break;
-            }
+        for(Student student : Students.getInstance().getStudents()){
+            JPanel studentPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            studentPanel.setMaximumSize(new Dimension(nameText.getPreferredSize().width +85, 40));
+            JLabel studentLabel = new JLabel(student.getFullName());
+            studentLabel.setPreferredSize(new Dimension((nameText.getPreferredSize().width-150), 20));
+            JButton semesterButton = new JButton("Semester");
+            semesterButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Gui topFrame = Gui.getMainFrame();
+                    topFrame.setStudent(student);
+                    topFrame.setContentPane(new SemesterPanel());
+                    topFrame.revalidate();
+                    topFrame.repaint();
+                }
+            });
+            JButton showButton = new JButton("Anzeigen");
+            showButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new ScoreList(student);
+                }
+            });
+            JButton deleteButton = new JButton("Löschen");
+            deleteButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Students.getInstance().removeStudent(student);
+                    JFrame topFrame = Gui.getMainFrame();
+                    topFrame.setContentPane(new StudentPanel());
+                    topFrame.revalidate();
+                    topFrame.repaint();
+                }
+            });
+            studentPanel.add(studentLabel);
+            studentPanel.add(semesterButton);
+            studentPanel.add(showButton);
+            studentPanel.add(deleteButton);
+            studentPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.DARK_GRAY));
+            scrollPanel.add(studentPanel);
         }
         
         studentList.add(scrollPanel);
@@ -100,14 +129,18 @@ public class StudentPanel extends JPanel {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Student erzeugen und speichern
-                student = new Student(preNameText.getText(), nameText.getText());
-                Gui.setStudent(student);
-                // Semester Panel laden
-                JFrame topFrame = Gui.getMainFrame();
-                topFrame.setContentPane(new SemesterPanel());
-                topFrame.revalidate();
-                topFrame.repaint();
+                if(!preNameText.getText().equals("") && !nameText.getText().equals("")){
+                    
+                    // Student erzeugen und speichern
+                    student = new Student(preNameText.getText(), nameText.getText());
+                    Students.getInstance().addStudent(student);
+                    
+                    // Semester Panel laden
+                    JFrame topFrame = Gui.getMainFrame();
+                    topFrame.setContentPane(new StudentPanel());
+                    topFrame.revalidate();
+                    topFrame.repaint();
+                }
             }
         });
         cancel = new JButton("Zurück");

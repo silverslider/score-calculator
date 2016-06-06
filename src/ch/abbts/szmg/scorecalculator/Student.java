@@ -62,6 +62,8 @@ public class Student extends Person implements Serializable{
         return semesters;
     }
     
-
+    public void removeSemester(Semester semester){
+        semesters.remove(semester);
+    }  
     
 }

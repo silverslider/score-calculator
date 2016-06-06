@@ -89,7 +89,7 @@ public class ModulPanel extends JPanel {
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame topFrame = Gui.getMainFrame();
+                Gui topFrame = Gui.getMainFrame();
                 topFrame.setContentPane(new SemesterPanel());
                 topFrame.revalidate();
                 topFrame.repaint();

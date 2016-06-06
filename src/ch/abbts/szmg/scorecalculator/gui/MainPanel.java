@@ -49,7 +49,7 @@ public class MainPanel extends JPanel {
         student.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame topFrame = Gui.getMainFrame();
+                Gui topFrame = Gui.getMainFrame();
                 topFrame.setContentPane(new StudentPanel());
                 topFrame.revalidate();
                 topFrame.repaint();

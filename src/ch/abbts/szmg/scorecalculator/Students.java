@@ -61,8 +61,14 @@ public class Students implements Serializable {
     public void addStudent(Student student) {
         students.add(student);
     }
+    public void removeStudent(Student student){
+        students.remove(student);
+    }
     public static void setStudents(Students students) {
         instance = students;
+    }
+    public ArrayList<Student> getStudents(){
+        return students;
     }
     public static void removeStudents() {
         instance = null;

@@ -18,11 +18,11 @@ public class Gui extends JFrame {
     private TopMenuBar topMenuBar;
     private int frameWidth = 800;
     private int frameHeight = 400;
-    private static JFrame mainFrame;
+    private static Gui mainFrame;
     
-    private static Student student;
-    private static Semester semester;
-    private static Module module;
+    private Student student;
+    private Semester semester;
+    private Module module;
     
     // Konstruktor für Gui    
     public Gui() { 
@@ -52,27 +52,25 @@ public class Gui extends JFrame {
         setVisible(true);
     }
     
-    public static JFrame getMainFrame(){
+    public static Gui getMainFrame(){
         return mainFrame;
     }
-    public static Student getStudent() {
+    public Student getStudent() {
         return student;
     }
-    public static void setStudent(Student student) {
-        Gui.student = student;
-        Students.getInstance().addStudent(student);
+    public void setStudent(Student student) {
+        this.student = student;
     }
-    public static Semester getSemester(String nameOfStudent) {
+    public Semester getSemester() {
         return semester;
     }
-    public static void setSemester(Semester semester) {
-        Gui.semester = semester;
-        Students.getInstance().getStudent(Gui.getStudent().getName()).addSemester(semester);
+    public void setSemester(Semester semester) {
+        this.semester = semester;
     }
-    public static Module getModule() {
+    public Module getModule() {
         return module;
     }
-    public static void setModule(Module module) {
-        Gui.module = module;
+    public void setModule(Module module) {
+        this.module = module;
     }
 }

@@ -19,7 +19,6 @@ public class SemesterPanel extends JPanel {
     private JLabel title, nameLabel, descriptionLabel;
     private JTextField nameText, descriptionText;
     private JButton save, cancel;
-    private Semester semester;
     
     public SemesterPanel() {
         initSemesterPanel();
@@ -33,13 +32,15 @@ public class SemesterPanel extends JPanel {
         this.addBottomPanel();
     }
     private void addTopPanel(){
-        title = new JLabel("Semester");
+        title = new JLabel("Semester von " + Gui.getMainFrame().getStudent().getFullName());
         title.setForeground(Color.RED);
         nameLabel = new JLabel("Name");
         nameLabel.setForeground(Color.WHITE);
+        nameLabel.setPreferredSize(new Dimension(80, 20));
         nameText = new JTextField(50);
         descriptionLabel = new JLabel("Beschreibung");
         descriptionLabel.setForeground(Color.WHITE);
+        descriptionLabel.setPreferredSize(new Dimension(80, 20));
         descriptionText = new JTextField(50);
         // Panel für Semester Erfassung
         JPanel topPanel = new JPanel();
@@ -61,10 +62,50 @@ public class SemesterPanel extends JPanel {
     }    
     private void addCenterPanel() {
         JPanel centerPanel = new JPanel(new FlowLayout());
-        centerPanel.setBackground(Color.DARK_GRAY);
-        JLabel text = new JLabel("Hier kommt deine Liste hinein");
-        text.setForeground(Color.BLUE);
-        centerPanel.add(text);
+        centerPanel.setBackground(Color.DARK_GRAY);   
+        ScrollPane semesterList = new ScrollPane();
+        semesterList.setPreferredSize(new Dimension((nameText.getPreferredSize().width+ 85),200));
+        JPanel scrollPanel = new JPanel();
+        scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.Y_AXIS));
+        
+
+             
+        for(Semester semester : Gui.getMainFrame().getStudent().getSemesters()){
+            JPanel studentPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            studentPanel.setMaximumSize(new Dimension(nameText.getPreferredSize().width +85, 40));
+            JLabel studentLabel = new JLabel(semester.getName());
+            studentLabel.setPreferredSize(new Dimension((nameText.getPreferredSize().width-150), 20));
+            JButton showButton = new JButton("Fächer");
+            showButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Gui topFrame = Gui.getMainFrame();
+                    topFrame.setSemester(semester);
+                    topFrame.setContentPane(new ModulPanel());
+                    topFrame.revalidate();
+                    topFrame.repaint();
+                }
+            });
+            JButton deleteButton = new JButton("Löschen");
+            deleteButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Gui.getMainFrame().getStudent().removeSemester(semester);
+                    JFrame topFrame = Gui.getMainFrame();
+                    topFrame.setContentPane(new SemesterPanel());
+                    topFrame.revalidate();
+                    topFrame.repaint();
+                }
+            });
+            studentPanel.add(studentLabel);
+            studentPanel.add(showButton);
+            studentPanel.add(deleteButton);
+            studentPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.DARK_GRAY));
+            scrollPanel.add(studentPanel);
+        }
+        
+        semesterList.add(scrollPanel);
+        centerPanel.add(semesterList);
         add(centerPanel, BorderLayout.CENTER);
     }
 
@@ -75,10 +116,11 @@ public class SemesterPanel extends JPanel {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                semester = new Semester(nameText.getText() ,descriptionText.getText());
-                Gui.setSemester(semester);
-                JFrame topFrame = Gui.getMainFrame();
-                topFrame.setContentPane(new ModulPanel());
+                Gui topFrame = Gui.getMainFrame();
+                Semester semester = new Semester(nameText.getText() ,descriptionText.getText());
+                topFrame.setSemester(semester);
+                topFrame.getStudent().addSemester(semester);
+                topFrame.setContentPane(new SemesterPanel());
                 topFrame.revalidate();
                 topFrame.repaint();
             }
