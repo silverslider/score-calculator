@@ -16,11 +16,7 @@ public class ScoreCalculator {
      * Startet das Programm Score Calculator. 
      * @param args
      */
-    public static void main(String[] args) {
-        /*StudentsCmd commandline = new StudentsCmd();
-        commandline.startCmd();*/
-        
+    public static void main(String[] args) {        
         new Gui();
-        
     }
 }
