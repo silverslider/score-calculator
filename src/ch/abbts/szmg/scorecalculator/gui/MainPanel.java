@@ -39,7 +39,19 @@ public class MainPanel extends JPanel {
         // Panel für Erfassungsmaske
         JPanel centerPanel = new JPanel(new FlowLayout());
         centerPanel.setBackground(Color.DARK_GRAY);
-        centerPanel.add(title);
+        ImageIcon bigRaupe = new ImageIcon("raupe.jpg");
+        Image raupe = bigRaupe.getImage().getScaledInstance(270, 300, java.awt.Image.SCALE_SMOOTH);
+        JLabel pitureLabel = new JLabel(new ImageIcon(raupe));
+        JLabel titel = new JLabel("Studentenverwaltung");
+        titel.setFont(new Font("Arial", Font.ITALIC, 48));
+        titel.setForeground(Color.white);
+        JLabel titel2 = new JLabel("...designed by Caterpillarware");
+        titel2.setFont(new Font("Arial", Font.ITALIC, 24));
+        titel2.setForeground(Color.white);
+        centerPanel.add(titel);
+        centerPanel.add(titel2);
+        
+        add(pitureLabel, BorderLayout.WEST);
         add(centerPanel, BorderLayout.CENTER);
     }    
     private void addBottomPanel() {
