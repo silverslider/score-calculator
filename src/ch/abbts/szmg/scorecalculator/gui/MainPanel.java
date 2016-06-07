@@ -6,8 +6,6 @@
 package ch.abbts.szmg.scorecalculator.gui;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import javax.swing.*;
 
 /**
@@ -41,20 +39,7 @@ public class MainPanel extends JPanel {
         // Panel für Erfassungsmaske
         JPanel centerPanel = new JPanel(new FlowLayout());
         centerPanel.setBackground(Color.DARK_GRAY);
-        ImageIcon bigRaupe = new ImageIcon("raupe.jpg");
-        Image raupe = bigRaupe.getImage().getScaledInstance(270, 300, java.awt.Image.SCALE_SMOOTH);
-        JLabel picturePanel = new JLabel(new ImageIcon(raupe));
-        add(picturePanel, BorderLayout.WEST);
-        JLabel titel = new JLabel();
-        titel.setFont(new Font("Arial", Font.ITALIC, 48));
-        titel.setForeground(Color.WHITE);
-        titel.setText("Notenverwaltung");
-        JLabel titel2 = new JLabel();
-        titel2.setFont(new Font("Arial", Font.ITALIC, 24));
-        titel2.setForeground(Color.WHITE);
-        titel2.setText("designed by Caterpillarware...");
-        centerPanel.add(titel);
-        centerPanel.add(titel2);
+        centerPanel.add(title);
         add(centerPanel, BorderLayout.CENTER);
     }    
     private void addBottomPanel() {
