@@ -38,6 +38,9 @@ public class Semester implements Serializable {
     public void addModule(String name, String description) {
         modules.add(new Module(name, description));
     }
+    public void addModule(Module module) {
+        modules.add(module);
+    }
     public Module getModule(int index) {
         Module tempModule = null;
         if (index < modules.size()) {
@@ -47,6 +50,9 @@ public class Semester implements Serializable {
     }
     public ArrayList<Module> getModules() {
         return modules;
+    }
+    public void removeModule(Module module){
+        modules.remove(module);
     }
     /**
      * Berechnet den Notenschnitt aller Module. 

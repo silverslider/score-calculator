@@ -16,10 +16,9 @@ import javax.swing.*;
  */
 public class ModulPanel extends JPanel {
     
-    private JLabel title, scoreLabel, weightLabel;
-    private JTextField scoreText, weightText;
+    private JLabel title, nameLabel, descriptionLabel;
+    private JTextField nameText, descriptionText;
     private JButton save, cancel;
-    private Score score;
     
     public ModulPanel() {
         initModulPanel();
@@ -33,17 +32,17 @@ public class ModulPanel extends JPanel {
         this.addBottomPanel();
         }
     private void addTopPanel(){
-        // Komponenten für Notenerfassung
-        title = new JLabel("Fach");
+        title = new JLabel("Student: " + Gui.getMainFrame().getStudent().getFullName() + " im Semester " + Gui.getMainFrame().getSemester().getName());
         title.setForeground(Color.RED);
-        scoreLabel = new JLabel("Note");
-        scoreLabel.setForeground(Color.WHITE);
-        weightLabel = new JLabel("Gewicht");
-        weightLabel.setForeground(Color.WHITE);
-        scoreText = new JTextField(10);
-        weightText = new JTextField(10);
-        
-        // Panel für Erfassungsmaske
+        nameLabel = new JLabel("Name");
+        nameLabel.setForeground(Color.WHITE);
+        nameLabel.setPreferredSize(new Dimension(80, 20));
+        nameText = new JTextField(50);
+        descriptionLabel = new JLabel("Beschreibung");
+        descriptionLabel.setForeground(Color.WHITE);
+        descriptionLabel.setPreferredSize(new Dimension(80, 20));
+        descriptionText = new JTextField(50);
+        // Panel für Semester Erfassung
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
         topPanel.setBackground(Color.DARK_GRAY);
@@ -51,37 +50,89 @@ public class ModulPanel extends JPanel {
         // Sub Panel pro Zeile
         JPanel topSubPanel1 = new JPanel(new FlowLayout());
         topSubPanel1.setBackground(Color.DARK_GRAY);
-        topSubPanel1.add(scoreLabel);
-        topSubPanel1.add(scoreText);
+        topSubPanel1.add(nameLabel);
+        topSubPanel1.add(nameText);
         JPanel topSubPanel2 = new JPanel(new FlowLayout());
         topSubPanel2.setBackground(Color.DARK_GRAY);
-        topSubPanel2.add(weightLabel);
-        topSubPanel2.add(weightText);
+        topSubPanel2.add(descriptionLabel);
+        topSubPanel2.add(descriptionText);
         topPanel.add(topSubPanel1);
         topPanel.add(topSubPanel2);
         add(topPanel, BorderLayout.NORTH);
     }    
     private void addCenterPanel() {
         JPanel centerPanel = new JPanel(new FlowLayout());
-        centerPanel.setBackground(Color.DARK_GRAY);
-        JLabel text = new JLabel("Hier kommt deine Liste hinein");
-        text.setForeground(Color.BLUE);
-        centerPanel.add(text);
+        centerPanel.setBackground(Color.DARK_GRAY);   
+        ScrollPane modulList = new ScrollPane();
+        modulList.setPreferredSize(new Dimension((nameText.getPreferredSize().width+ 85),200));
+        JPanel scrollPanel = new JPanel();
+        scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.Y_AXIS));
+        
+
+             
+        for(Module module : Gui.getMainFrame().getSemester().getModules()){
+            JPanel modulPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            modulPanel.setMaximumSize(new Dimension(nameText.getPreferredSize().width +85, 40));
+            JLabel modulLabel = new JLabel(module.getName());
+            modulLabel.setPreferredSize(new Dimension((nameText.getPreferredSize().width-200), 20));
+            JButton moduleButton = new JButton("Noten");
+            moduleButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Gui topFrame = Gui.getMainFrame();
+                    topFrame.setModule(module);
+                    topFrame.setContentPane(new ScorePanel());
+                    topFrame.revalidate();
+                    topFrame.repaint();
+                }
+            });
+            JButton showButton = new JButton("Anzeigen");
+            showButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new ScoreList(module);
+                }
+            });
+            JButton deleteButton = new JButton("Löschen");
+            deleteButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Gui topFrame = Gui.getMainFrame();
+                    topFrame.getSemester().removeModule(module);
+                    topFrame.setContentPane(new ModulPanel());
+                    topFrame.revalidate();
+                    topFrame.repaint();
+                }
+            });
+            modulPanel.add(modulLabel);
+            modulPanel.add(moduleButton);
+            modulPanel.add(showButton);
+            modulPanel.add(deleteButton);
+            modulPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.DARK_GRAY));
+            scrollPanel.add(modulPanel);
+        }
+        
+        modulList.add(scrollPanel);
+        centerPanel.add(modulList);
         add(centerPanel, BorderLayout.CENTER);
     }
 
-        private void addBottomPanel() {
+    private void addBottomPanel() {
         // Buttons erzeugen
         save = new JButton("Speichern");
         save.setBackground(Color.orange);
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                score = new Score(Double.parseDouble(scoreText.getText()), Integer.parseInt(weightText.getText()));
-                JFrame topFrame = Gui.getMainFrame();
-                topFrame.setContentPane(new ModulPanel());
-                topFrame.revalidate();
-                topFrame.repaint();
+                if(!nameText.getText().equals("")){
+                    Gui topFrame = Gui.getMainFrame();
+                    Module module = new Module(nameText.getText(), descriptionText.getText());
+                    topFrame.getSemester().addModule(module);
+                    topFrame.setModule(module);
+                    topFrame.setContentPane(new ModulPanel());
+                    topFrame.revalidate();
+                    topFrame.repaint();
+                }
             }
         });
         cancel = new JButton("Zurück");

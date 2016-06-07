@@ -71,12 +71,12 @@ public class SemesterPanel extends JPanel {
 
              
         for(Semester semester : Gui.getMainFrame().getStudent().getSemesters()){
-            JPanel studentPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-            studentPanel.setMaximumSize(new Dimension(nameText.getPreferredSize().width +85, 40));
-            JLabel studentLabel = new JLabel(semester.getName());
-            studentLabel.setPreferredSize(new Dimension((nameText.getPreferredSize().width-150), 20));
-            JButton showButton = new JButton("Fächer");
-            showButton.addActionListener(new ActionListener() {
+            JPanel semesterPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+            semesterPanel.setMaximumSize(new Dimension(nameText.getPreferredSize().width +85, 40));
+            JLabel semesterLabel = new JLabel(semester.getName());
+            semesterLabel.setPreferredSize(new Dimension((nameText.getPreferredSize().width-200), 20));
+            JButton semesterButton = new JButton("Fächer");
+            semesterButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     Gui topFrame = Gui.getMainFrame();
@@ -86,22 +86,30 @@ public class SemesterPanel extends JPanel {
                     topFrame.repaint();
                 }
             });
+            JButton showButton = new JButton("Anzeigen");
+            showButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    new ScoreList(semester);
+                }
+            });
             JButton deleteButton = new JButton("Löschen");
             deleteButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Gui.getMainFrame().getStudent().removeSemester(semester);
-                    JFrame topFrame = Gui.getMainFrame();
+                    Gui topFrame = Gui.getMainFrame();
+                    topFrame.getStudent().removeSemester(semester);
                     topFrame.setContentPane(new SemesterPanel());
                     topFrame.revalidate();
                     topFrame.repaint();
                 }
             });
-            studentPanel.add(studentLabel);
-            studentPanel.add(showButton);
-            studentPanel.add(deleteButton);
-            studentPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.DARK_GRAY));
-            scrollPanel.add(studentPanel);
+            semesterPanel.add(semesterLabel);
+            semesterPanel.add(semesterButton);
+            semesterPanel.add(showButton);
+            semesterPanel.add(deleteButton);
+            semesterPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, Color.DARK_GRAY));
+            scrollPanel.add(semesterPanel);
         }
         
         semesterList.add(scrollPanel);
@@ -116,13 +124,15 @@ public class SemesterPanel extends JPanel {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Gui topFrame = Gui.getMainFrame();
-                Semester semester = new Semester(nameText.getText() ,descriptionText.getText());
-                topFrame.setSemester(semester);
-                topFrame.getStudent().addSemester(semester);
-                topFrame.setContentPane(new SemesterPanel());
-                topFrame.revalidate();
-                topFrame.repaint();
+                if(!nameText.getText().equals("")){
+                    Gui topFrame = Gui.getMainFrame();
+                    Semester semester = new Semester(nameText.getText() ,descriptionText.getText());
+                    topFrame.setSemester(semester);
+                    topFrame.getStudent().addSemester(semester);
+                    topFrame.setContentPane(new SemesterPanel());
+                    topFrame.revalidate();
+                    topFrame.repaint();
+                }
             }
         });
         cancel = new JButton("Zurück");

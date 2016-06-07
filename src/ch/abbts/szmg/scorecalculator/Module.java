@@ -47,6 +47,9 @@ public class Module implements Serializable {
     public ArrayList<Score> getScores() {
         return scores;
     }
+    public void removeScore(Score score){
+        scores.remove(score);
+    }    
     /** 
      * Berechnet den Notenschnitt eines Moduls und gibt den Notenschnitt zurück. 
      * @return Notenschnitt Modul. 
