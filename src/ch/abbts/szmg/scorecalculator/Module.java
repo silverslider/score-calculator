@@ -13,14 +13,14 @@ import java.util.ArrayList;
  * @author szobrist
  */
 public class Module implements Serializable {
-    private String name;
-    private String description; 
+    private String name, description, instructorName;
     private ArrayList<Score> scores; 
     
-    public Module(String name, String description) {
+    public Module(String name, String description, String instructorName) {
         this.scores = new ArrayList<Score>();
         this.name = name; 
         this.description = description; 
+        this.instructorName = instructorName;
     }
     /**
      * Gibt den Namen des Moduls zurück. 
@@ -64,5 +64,11 @@ public class Module implements Serializable {
         }
         average = Math.round((sumXiFi / sumFi) * 10) / 10.0;
         return average; 
+    }
+    public String getDescription() {
+        return description;
+    }
+    public String getInstructor() {
+        return instructorName;
     }
 }

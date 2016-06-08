@@ -5,7 +5,6 @@
  */
 package ch.abbts.szmg.scorecalculator.gui;
 import ch.abbts.szmg.scorecalculator.Students;
-import ch.abbts.szmg.scorecalculator.StudentsCmd;
 import java.awt.event.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -78,7 +77,7 @@ public class TopMenuBar extends JMenuBar {
                     ois.close();
                     JOptionPane.showMessageDialog(null, "Daten geladen");
                 } catch (IOException | ClassNotFoundException ex) {
-                    Logger.getLogger(StudentsCmd.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(TopMenuBar.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, "Laden fehlgeschlagen");
                 }
             }

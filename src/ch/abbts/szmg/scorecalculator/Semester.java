@@ -35,8 +35,8 @@ public class Semester implements Serializable {
      * @param name Name des Moduls. 
      * @param description Beschreibung des Moduls. 
      */
-    public void addModule(String name, String description) {
-        modules.add(new Module(name, description));
+    public void addModule(String name, String description, String instructorName) {
+        modules.add(new Module(name, description, instructorName));
     }
     public void addModule(Module module) {
         modules.add(module);
@@ -67,5 +67,8 @@ public class Semester implements Serializable {
         }
         average = Math.round((sum / modules.size()) * 10) / 10.0;
         return average; 
+    }
+    public String getdescription() {
+        return description;
     }
 }

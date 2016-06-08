@@ -16,8 +16,8 @@ import javax.swing.*;
  */
 public class ModulPanel extends JPanel {
     
-    private JLabel title, nameLabel, descriptionLabel;
-    private JTextField nameText, descriptionText;
+    private JLabel title, nameLabel, descriptionLabel, instructorLabel;
+    private JTextField nameText, descriptionText, instructorText;
     private JButton save, cancel;
     
     public ModulPanel() {
@@ -42,6 +42,10 @@ public class ModulPanel extends JPanel {
         descriptionLabel.setForeground(Color.WHITE);
         descriptionLabel.setPreferredSize(new Dimension(80, 20));
         descriptionText = new JTextField(50);
+        instructorLabel = new JLabel("Dozent");
+        instructorLabel.setForeground(Color.WHITE);
+        instructorLabel.setPreferredSize(new Dimension(80, 20));
+        instructorText = new JTextField(50);
         // Panel für Semester Erfassung
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
@@ -56,8 +60,13 @@ public class ModulPanel extends JPanel {
         topSubPanel2.setBackground(Color.DARK_GRAY);
         topSubPanel2.add(descriptionLabel);
         topSubPanel2.add(descriptionText);
+        JPanel topSubPanel3 = new JPanel(new FlowLayout());
+        topSubPanel3.setBackground(Color.DARK_GRAY);
+        topSubPanel3.add(instructorLabel);
+        topSubPanel3.add(instructorText);
         topPanel.add(topSubPanel1);
         topPanel.add(topSubPanel2);
+        topPanel.add(topSubPanel3);
         add(topPanel, BorderLayout.NORTH);
     }    
     private void addCenterPanel() {
@@ -126,7 +135,7 @@ public class ModulPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if(!nameText.getText().equals("")){
                     Gui topFrame = Gui.getMainFrame();
-                    Module module = new Module(nameText.getText(), descriptionText.getText());
+                    Module module = new Module(nameText.getText(), descriptionText.getText(), instructorText.getText());
                     topFrame.getSemester().addModule(module);
                     topFrame.setModule(module);
                     topFrame.setContentPane(new ModulPanel());

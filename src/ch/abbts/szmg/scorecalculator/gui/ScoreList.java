@@ -27,9 +27,9 @@ public class ScoreList {
         text = "<html><b>Notenschnitt pro Semester: </b>";
         if (student.getSemesters() != null && student.getSemesters().size() > 0) {
             for (Semester semester : student.getSemesters()) {
-                text += "<tr> <td>" + semester.getName() + "</td> <td> " + semester.getAverage() + "</td> </tr>" ;
+                text += "<tr><td>" + semester.getName() + "</td><td>" + semester.getdescription() + "</td><td> " + semester.getAverage() + "</td></tr>" ;
             }
-            text += "<tr><td><b>Gesamtnotenschnitt: <b></td>" + student.getAverage() + "</tr></html>";
+            text += "<tr><td><b>Gesamtnotenschnitt: <b></td><td></td><td>" + student.getAverage() + "</td></tr></html>";
             JOptionPane.showMessageDialog(Gui.getMainFrame(), text, "Notenliste von " + student.getFullName(), JOptionPane.PLAIN_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(Gui.getMainFrame(), "Keine Daten vorhanden!", "Fehler", JOptionPane.ERROR_MESSAGE);
@@ -63,7 +63,7 @@ public class ScoreList {
     private void initModuleDialog(){
         String text = new String();
         if(module.getScores() != null && module.getScores().size() > 0){
-            text = "<html><h2>Fach: " + module.getName() + "</h2><br><tr><td><b>Notenschnitt : </td><td>" + module.getAverage() + "</td></b>";
+            text = "<html><h2>Fach: " + module.getName() + "</h2><br><tr><td><b>Dozent: </b><td>" + module.getInstructor() + "</td></tr><tr><td>Notenschnitt : </td><td>" + module.getAverage() + "</td></html>";
             JOptionPane.showMessageDialog(Gui.getMainFrame(), text, "Notenliste von " + module.getName(), JOptionPane.PLAIN_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(Gui.getMainFrame(), "Keine Daten vorhanden!", "Fehler", JOptionPane.ERROR_MESSAGE);

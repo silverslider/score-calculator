@@ -19,10 +19,11 @@ public class Gui extends JFrame {
     private int frameWidth = 800;
     private int frameHeight = 400;
     private static Gui mainFrame;
-    
+
     private Student student;
     private Semester semester;
     private Module module;
+
     
     // Konstruktor für Gui    
     public Gui() { 
