@@ -34,7 +34,7 @@ public class Gui extends JFrame {
         //Objekt apeichern für statischen Aufruf
         mainFrame = this;
         // MainFrame generieren: Titel, Position und gösse setzen
-        setTitle("Score calculator");
+        setTitle("Score Calculator");
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         int screenWidth = gd.getDisplayMode().getWidth();
         int screenHeight = gd.getDisplayMode().getHeight();
