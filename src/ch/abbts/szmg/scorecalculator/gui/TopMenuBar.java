@@ -29,7 +29,10 @@ public class TopMenuBar extends JMenuBar {
     
     public TopMenuBar() {
         initMenuBar();
-    }    
+    }
+    /**
+     * Initialisiseren der MenuBar
+     */
     private void initMenuBar() {
                 
         // Menübar erzeugen

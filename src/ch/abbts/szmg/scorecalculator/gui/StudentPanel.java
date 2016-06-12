@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
- *
- * @author mg
+ * Panel zur Verwaltung der Studenten
+ * @author Marc Guidicelli
  */
 public class StudentPanel extends JPanel {
     

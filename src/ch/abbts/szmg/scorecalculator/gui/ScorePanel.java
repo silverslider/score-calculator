@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
- *
- * @author mg
+ * Panel zur Verwaltung der Noten
+ * @author Marc Guidicelli
  */
 public class ScorePanel extends JPanel {
     

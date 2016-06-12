@@ -12,7 +12,7 @@ import javax.swing.*;
 
 /**
  * Panel zur Verwaltung der Module
- * @author mg
+ * @author Marc Guidicelli
  */
 public class ModulPanel extends JPanel {
     
@@ -23,6 +23,7 @@ public class ModulPanel extends JPanel {
     public ModulPanel() {
         initModulPanel();
     }
+    //Initialisiseren des ModulPanels
     private void initModulPanel() {
         // Panel erzeugen
         this.setBackground(Color.DARK_GRAY);
@@ -30,7 +31,10 @@ public class ModulPanel extends JPanel {
         this.addTopPanel();
         this.addCenterPanel();
         this.addBottomPanel();
-        }
+    }
+    /*
+     * Hinzufügen des TopPanels
+     */
     private void addTopPanel(){
         //Panel für den North Bereich        
         title = new JLabel("Student: " + Gui.getMainFrame().getStudent().getFullName() + " im Semester " + Gui.getMainFrame().getSemester().getName());
@@ -71,7 +75,10 @@ public class ModulPanel extends JPanel {
         topPanel.add(topSubPanel2);
         topPanel.add(topSubPanel3);
         add(topPanel, BorderLayout.NORTH);
-    }    
+    }
+    /*
+     * Hinzufügen des CenterPanels
+     */
     private void addCenterPanel() {
         // Panel für den Center Bereich
         JPanel centerPanel = new JPanel(new FlowLayout());
@@ -98,6 +105,7 @@ public class ModulPanel extends JPanel {
                     topFrame.repaint();
                 }
             });
+            
             JButton showButton = new JButton("Anzeigen");
             showButton.addActionListener(new ActionListener() {
                 @Override
@@ -105,6 +113,7 @@ public class ModulPanel extends JPanel {
                     new ScoreList(module);
                 }
             });
+            
             JButton deleteButton = new JButton("Löschen");
             deleteButton.addActionListener(new ActionListener() {
                 @Override
@@ -116,6 +125,7 @@ public class ModulPanel extends JPanel {
                     topFrame.repaint();
                 }
             });
+            
             modulPanel.add(modulLabel);
             modulPanel.add(moduleButton);
             modulPanel.add(showButton);
@@ -128,7 +138,9 @@ public class ModulPanel extends JPanel {
         centerPanel.add(modulList);
         add(centerPanel, BorderLayout.CENTER);
     }
-
+    /*
+     * Hinzufügen des BottomPanels
+     */
     private void addBottomPanel() {
         // Buttons erzeugen
         save = new JButton("Speichern");
@@ -146,17 +158,20 @@ public class ModulPanel extends JPanel {
                 }
             }
         });
+        
         cancel = new JButton("Zurück");
         cancel.setBackground(Color.orange);
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // MainFrame holen,  neues SemesterPanel erzeugen und einklinken.
                 Gui topFrame = Gui.getMainFrame();
                 topFrame.setContentPane(new SemesterPanel());
                 topFrame.revalidate();
                 topFrame.repaint();
             }
-        });        
+        });     
+        
         //Panel für Buttons
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         bottomPanel.add(cancel);

@@ -9,8 +9,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- * Hauptansicht welche beim erzeigen des Frames geladen wird.
- * @author mg
+ * Hauptansicht welche beim erzeugen des Frames geladen wird.
+ * @author Marc Guidicelli
  */
 public class MainPanel extends JPanel {
     
@@ -20,6 +20,9 @@ public class MainPanel extends JPanel {
     public MainPanel() {
         initMainPanel();
     }
+    /*
+     * Methode zum initialisiseren des mainPanels
+     */
     private void initMainPanel() {
         // Panel für ContentPane erzeugen
         this.setBackground(Color.DARK_GRAY);
@@ -28,6 +31,9 @@ public class MainPanel extends JPanel {
         this.addCenterPanel();
         this.addBottomPanel();
     }
+    /*
+     * Hinzufügen des TopPanels
+     */
     private void addtopPanel() {
         //Subpanel für den North Bereich
         JPanel topPanel = new JPanel(new FlowLayout());
@@ -36,6 +42,9 @@ public class MainPanel extends JPanel {
         title.setForeground(Color.RED);
         add(topPanel, BorderLayout.NORTH);
     }
+    /*
+     * Hinzufügen des CenterPanels
+     */
     private void addCenterPanel(){
         // Panel für die Haupseite im Center
         JPanel centerPanel = new JPanel(new FlowLayout());
@@ -54,7 +63,10 @@ public class MainPanel extends JPanel {
         
         add(pitureLabel, BorderLayout.WEST);
         add(centerPanel, BorderLayout.CENTER);
-    }    
+    }
+    /*
+     * Hinzufügen des BottomPanels
+     */
     private void addBottomPanel() {
         // Buttons erzeugen
         student = new JButton("Student hinzufügen");

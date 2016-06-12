@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
- *
+ * Panel zur Verwaltung der Semester
  * @author mg
  */
 public class SemesterPanel extends JPanel {
