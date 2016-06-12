@@ -10,7 +10,10 @@ import java.util.ArrayList;
 
 /**
  * Es können Studenten erzeugt und verwaltet werden. 
- * @author szobrist
+ * Initialisierung von Studenten ist nur über die statische Methode getInstance möglich. 
+ * Es kann nur ein Students Objekt zur gleichen Zeit existieren. 
+ * Ist serialisierbar. 
+ * @author Simon Zobrist
  */
 public class Students implements Serializable {
     private static Students instance; 
@@ -21,7 +24,7 @@ public class Students implements Serializable {
     }
     /**
      * Instanziert ein Objekt vom Typ Students. Es kann nur ein Objekt Students erzeugt werden. 
-     * Dient als Zugriff zur Notenberechnungsstruktur. 
+     * Dient als Zugriff zur Notenberechnungs- und -verwaltungsstruktur. 
      */
     public static Students getInstance() {
         if (instance == null) {
@@ -43,6 +46,11 @@ public class Students implements Serializable {
         }
         return ret;
     }
+    /**
+     * Gibt einen Studenten nach ArrayList of Student index zurück. 
+     * @param index int ArrayList Index des zu übergebenden Studenten. 
+     * @return Student Gibt ein Studentenobjekt zurück. 
+     */
     public Student getStudent(int index) {
         Student tempStudent = null;
         if (index < students.size()) {
@@ -58,18 +66,39 @@ public class Students implements Serializable {
     public void addStudent(String name, String preName) {
         students.add(new Student(name, preName));
     }
+    /**
+     * Fügt den übergebenen Studenten der ArrayList of Student hinzu. 
+     * @param student Student Nimmt das Studentenobjekt entgegen welches gespeichert werden soll. 
+     */
     public void addStudent(Student student) {
         students.add(student);
     }
+    /**
+     * Löscht den übergebenen Studenten aus der Studentensammlung (ArrayList of Student). 
+     * @param student Student Zu löschender Student. 
+     */
     public void removeStudent(Student student){
         students.remove(student);
     }
+    /**
+     * Setzt das Students Objekt. 
+     * Wird zum Laden der serialisierten Objekte verwendet. 
+     * @param students Students 
+     */
     public static void setStudents(Students students) {
         instance = students;
     }
+    /**
+     * Gibt die Studentensammlung zurück. 
+     * @return ArrayList of Student 
+     */
     public ArrayList<Student> getStudents(){
         return students;
     }
+    /**
+     * Löscht alle Studenten und die darin enthaltenen Semester, Module und Noten
+     * indem das Students Objekt zurückgesetzt wird. 
+     */
     public static void removeStudents() {
         instance = null;
     }
