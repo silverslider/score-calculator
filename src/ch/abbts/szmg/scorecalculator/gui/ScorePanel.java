@@ -38,17 +38,20 @@ public class ScorePanel extends JPanel {
         title.setForeground(Color.RED);
         scoreLabel = new JLabel("Note");
         scoreLabel.setForeground(Color.WHITE);
+        scoreLabel.setPreferredSize(new Dimension(60, 20));
         weightLabel = new JLabel("Gewicht");
         weightLabel.setForeground(Color.WHITE);
+        weightLabel.setPreferredSize(new Dimension(60, 20));
         scoreText = new JTextField(10);
         weightText = new JTextField(10);
         
         
-        // Panel für Erfassungsmaske
+         // Panel für den North Bereich
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
         topPanel.setBackground(Color.DARK_GRAY);
         topPanel.add(title);
+        
         // Sub Panel pro Zeile
         JPanel topSubPanel1 = new JPanel(new FlowLayout());
         topSubPanel1.setBackground(Color.DARK_GRAY);
@@ -65,24 +68,30 @@ public class ScorePanel extends JPanel {
     }
     
     private void addCenterPanel() {
+         // Panel für den Center Bereich
         JPanel centerPanel = new JPanel(new FlowLayout());
         centerPanel.setBackground(Color.DARK_GRAY);   
         ScrollPane scoreList = new ScrollPane();
         scoreList.setPreferredSize(new Dimension(600,125));
         JPanel scrollPanel = new JPanel();
         scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.X_AXIS));
+        
+        //Zählvariable für Noten Nummer
         int i = 1;
+        
+        //Pro Note ein Panel dem Scrollpanel hinzufügen inkl. Buttons mit Actionlistener
+        //Ausrichtung horizontal vom Scrollpanel und vertikal pro Note
         for(Score score : Gui.getMainFrame().getModule().getScores()){
             JPanel scorePanel = new JPanel();
             scorePanel.setLayout(new BoxLayout(scorePanel, BoxLayout.Y_AXIS));
             scorePanel.setMaximumSize(new Dimension(60, 140));
             scorePanel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 2, Color.DARK_GRAY));
             JLabel numberLab = new JLabel(""+i);
-            numberLab.setAlignmentX(CENTER_ALIGNMENT);
-            numberLab.setHorizontalAlignment(SwingConstants.CENTER);
+            numberLab.setAlignmentX(CENTER_ALIGNMENT); // Komponente zentrieren
+            numberLab.setHorizontalAlignment(SwingConstants.CENTER); //Text zentrieren
             numberLab.setMaximumSize(new Dimension(50, 30));
             scorePanel.add(numberLab);
-            JLabel scoreLab = new JLabel(score.getScore()+"");
+            JLabel scoreLab = new JLabel(score.getScore()+""); //Empty String für Autoboxing
             scorePanel.add(scoreLab);
             scoreLab.setAlignmentX(CENTER_ALIGNMENT);
             scoreLab.setHorizontalAlignment(SwingConstants.CENTER);
@@ -110,6 +119,7 @@ public class ScorePanel extends JPanel {
             i++;
         }
         
+        //Falls Zählvariable sich nicht verändert -> keine Noten vorhanden
         if(i == 1){
             scrollPanel.add(new JLabel("Keine Noten Vorhanden"));
         }
@@ -118,6 +128,7 @@ public class ScorePanel extends JPanel {
         centerPanel.add(scoreList);
         add(centerPanel, BorderLayout.CENTER);
         
+        //Labels für ScrollPane im Bereich West
         JPanel sidePanel = new JPanel();
         sidePanel.setLayout(new BoxLayout(sidePanel, BoxLayout.Y_AXIS));
         sidePanel.setMaximumSize(new Dimension(90, 140));

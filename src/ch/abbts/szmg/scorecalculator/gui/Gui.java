@@ -31,6 +31,7 @@ public class Gui extends JFrame {
     }
     
     private void initGui() {
+        //Objekt apeichern für statischen Aufruf
         mainFrame = this;
         // MainFrame generieren: Titel, Position und gösse setzen
         setTitle("Score calculator");
@@ -42,6 +43,7 @@ public class Gui extends JFrame {
         setBackground(Color.DARK_GRAY);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Stellt sicher, dass sauber beendet wird.
         
+        //Menübar und ContentPane erzeugen und einhängen
         topMenuBar = new TopMenuBar();
         mainPanel = new MainPanel();
         
@@ -53,6 +55,7 @@ public class Gui extends JFrame {
         setVisible(true);
     }
     
+    //Getter & Setter
     public static Gui getMainFrame(){
         return mainFrame;
     }

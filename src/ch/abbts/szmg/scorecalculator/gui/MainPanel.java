@@ -9,7 +9,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /**
- *
+ * Hauptansicht welche beim erzeigen des Frames geladen wird.
  * @author mg
  */
 public class MainPanel extends JPanel {
@@ -21,7 +21,7 @@ public class MainPanel extends JPanel {
         initMainPanel();
     }
     private void initMainPanel() {
-        // Panel erzeugen und Grösse definieren
+        // Panel für ContentPane erzeugen
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
         this.addtopPanel();
@@ -29,6 +29,7 @@ public class MainPanel extends JPanel {
         this.addBottomPanel();
     }
     private void addtopPanel() {
+        //Subpanel für den North Bereich
         JPanel topPanel = new JPanel(new FlowLayout());
         topPanel.setBackground(Color.DARK_GRAY);
         title = new JLabel("Main");
@@ -36,7 +37,7 @@ public class MainPanel extends JPanel {
         add(topPanel, BorderLayout.NORTH);
     }
     private void addCenterPanel(){
-        // Panel für Erfassungsmaske
+        // Panel für die Haupseite im Center
         JPanel centerPanel = new JPanel(new FlowLayout());
         centerPanel.setBackground(Color.DARK_GRAY);
         ImageIcon bigRaupe = new ImageIcon("raupe.jpg");

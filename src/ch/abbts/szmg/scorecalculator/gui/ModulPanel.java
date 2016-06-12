@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
- *
+ * Panel zur Verwaltung der Module
  * @author mg
  */
 public class ModulPanel extends JPanel {
@@ -24,7 +24,7 @@ public class ModulPanel extends JPanel {
         initModulPanel();
     }
     private void initModulPanel() {
-        // Panel erzeugen und Grösse definieren
+        // Panel erzeugen
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
         this.addTopPanel();
@@ -32,6 +32,7 @@ public class ModulPanel extends JPanel {
         this.addBottomPanel();
         }
     private void addTopPanel(){
+        //Panel für den North Bereich        
         title = new JLabel("Student: " + Gui.getMainFrame().getStudent().getFullName() + " im Semester " + Gui.getMainFrame().getSemester().getName());
         title.setForeground(Color.RED);
         nameLabel = new JLabel("Name");
@@ -46,11 +47,13 @@ public class ModulPanel extends JPanel {
         instructorLabel.setForeground(Color.WHITE);
         instructorLabel.setPreferredSize(new Dimension(80, 20));
         instructorText = new JTextField(50);
+        
         // Panel für Semester Erfassung
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
         topPanel.setBackground(Color.DARK_GRAY);
         topPanel.add(title);
+        
         // Sub Panel pro Zeile
         JPanel topSubPanel1 = new JPanel(new FlowLayout());
         topSubPanel1.setBackground(Color.DARK_GRAY);
@@ -70,6 +73,7 @@ public class ModulPanel extends JPanel {
         add(topPanel, BorderLayout.NORTH);
     }    
     private void addCenterPanel() {
+        // Panel für den Center Bereich
         JPanel centerPanel = new JPanel(new FlowLayout());
         centerPanel.setBackground(Color.DARK_GRAY);   
         ScrollPane modulList = new ScrollPane();
@@ -77,8 +81,7 @@ public class ModulPanel extends JPanel {
         JPanel scrollPanel = new JPanel();
         scrollPanel.setLayout(new BoxLayout(scrollPanel, BoxLayout.Y_AXIS));
         
-
-             
+        //Pro Modul ein Panel dem Scrollpanel hinzufügen inkl. Buttons mit Actionlistener
         for(Module module : Gui.getMainFrame().getSemester().getModules()){
             JPanel modulPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
             modulPanel.setMaximumSize(new Dimension(nameText.getPreferredSize().width +85, 40));
@@ -137,7 +140,6 @@ public class ModulPanel extends JPanel {
                     Gui topFrame = Gui.getMainFrame();
                     Module module = new Module(nameText.getText(), descriptionText.getText(), instructorText.getText());
                     topFrame.getSemester().addModule(module);
-                    topFrame.setModule(module);
                     topFrame.setContentPane(new ModulPanel());
                     topFrame.revalidate();
                     topFrame.repaint();
