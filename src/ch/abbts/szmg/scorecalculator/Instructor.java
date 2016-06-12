@@ -6,8 +6,9 @@
 package ch.abbts.szmg.scorecalculator;
 
 /**
- *
- * @author szobrist
+ * Definiert Dozenten (Lehrpersonen). 
+ * Wird von Person abgeleitet. 
+ * @author Simon Zobrist
  */
 public class Instructor extends Person {
     

@@ -1,8 +1,8 @@
 /*
- * Die Applikation ScoreCalculator ist eine Notenberechnungssoftware. 
- * Mit ScoreCalculator können Studenten erfasst und deren Noten verwaltet werden. 
+ * Die Applikation ScoreCalculator ist eine Notenverwaltungssoftware. 
+ * Mit ScoreCalculator können Studenten erfasst und deren Noten pro Semester und Modul verwaltet werden. 
  * Es können Studenten, Semester, Fächer und Noten erfasst und der jeweilige Notenschnitt berechnet werden. 
- * Ausserdem kann einem Fasch jeweils ein Dozent zugewiesen werden. 
+ * Ausserdem kann einem Fach jeweils ein Dozent zugewiesen werden. 
  */
 package ch.abbts.szmg.scorecalculator;
 import ch.abbts.szmg.scorecalculator.gui.*;
