@@ -9,8 +9,8 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- *
- * @author mg
+ * 
+ * @author Marc Guidicelli
  */
 public class Gui extends JFrame {
 

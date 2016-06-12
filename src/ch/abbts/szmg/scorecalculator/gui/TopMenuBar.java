@@ -14,10 +14,12 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+import java.awt.*;
 
 /**
- *
- * @author mg
+ * Stellt die Menübar zur verfügung.
+ * 
+ * @author Marc Guidicelli
  */
 public class TopMenuBar extends JMenuBar {
     
@@ -109,6 +111,38 @@ public class TopMenuBar extends JMenuBar {
                 topFrame.repaint();
             }
         });
+        
+        // Menü Help
+        menu = new JMenu("?");
+        menuBar.add(menu);
+        
+        // Menüeintrag ? -> Über
+        menuItem = new JMenuItem("Über");
+        menu.add(menuItem);
+        menuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String message = new String();
+                message = "<html>"
+                        + "     <tr>"
+                        + "         <td>Notenverwaltung</td><td>"
+                        + "     </tr>"
+                        + "     <tr>"
+                        + "         <td>Authoren:</td><td>Simon Zobrist</td>"
+                        + "     </tr>"
+                        + "     <tr>"
+                        + "         <td></td><td>Marc Guidicelli</td>"
+                        + "     </tr>"
+                        + "</html>";
+                ImageIcon smallRaupe = new ImageIcon("raupe.jpg");
+                Image raupe = smallRaupe.getImage();
+                Image sRaupe = raupe.getScaledInstance(100, 111, java.awt.Image.SCALE_SMOOTH);
+                smallRaupe = new ImageIcon(sRaupe);
+                JOptionPane.showMessageDialog(null, message, "About", HEIGHT, smallRaupe);
+            
+            }
+        });
+    
         
         add(menuBar);
     }

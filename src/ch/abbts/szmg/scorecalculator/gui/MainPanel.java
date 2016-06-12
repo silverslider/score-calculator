@@ -43,7 +43,7 @@ public class MainPanel extends JPanel {
         ImageIcon bigRaupe = new ImageIcon("raupe.jpg");
         Image raupe = bigRaupe.getImage().getScaledInstance(270, 300, java.awt.Image.SCALE_SMOOTH);
         JLabel pitureLabel = new JLabel(new ImageIcon(raupe));
-        JLabel titel = new JLabel("Studentenverwaltung");
+        JLabel titel = new JLabel("Notenverwaltung");
         titel.setFont(new Font("Arial", Font.ITALIC, 48));
         titel.setForeground(Color.white);
         JLabel titel2 = new JLabel("...designed by Caterpillarware");
