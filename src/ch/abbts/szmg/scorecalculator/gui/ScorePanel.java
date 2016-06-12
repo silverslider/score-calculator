@@ -21,6 +21,7 @@ public class ScorePanel extends JPanel {
     private JTextField scoreText, weightText;
     private JButton save, cancel;
     
+    // Konstruktor für ScorePanel
     public ScorePanel() {
         
         // Panel erzeugen und Grösse definieren
@@ -28,10 +29,11 @@ public class ScorePanel extends JPanel {
         this.setLayout(new BorderLayout());
         this.addTopPanel();
         this.addCenterPanel();
-        this.addBottomPanel();
-        
+        this.addBottomPanel();        
     }
-    
+    /*
+     * Hinzufügen des TopPanel 
+     */
     private void addTopPanel(){
         // Komponenten für Notenerfassung
         title = new JLabel("Notenspiegel");
@@ -66,7 +68,9 @@ public class ScorePanel extends JPanel {
         
         add(topPanel, BorderLayout.NORTH);
     }
-    
+    /*
+     * Hinzufügen des CenterPanels 
+     */
     private void addCenterPanel() {
          // Panel für den Center Bereich
         JPanel centerPanel = new JPanel(new FlowLayout());
@@ -156,7 +160,9 @@ public class ScorePanel extends JPanel {
         add(sidePanel, BorderLayout.WEST);
         
     }
-    
+    /*
+     * Hinzufügen des Bottom Panels 
+     */
     private void addBottomPanel() {
         // Buttons erzeugen
         save = new JButton("Speichern");
@@ -168,6 +174,8 @@ public class ScorePanel extends JPanel {
                     double score = Double.parseDouble(scoreText.getText());
                     int weight = Integer.parseInt(weightText.getText());
                     if ((score >= 1 && score <= 6) && (weight >= 1 && weight <= 100)) {
+                        
+                        // ScorePanel laden
                         Gui topFrame = Gui.getMainFrame();
                         topFrame.getModule().addScore(score, weight);
                         topFrame.setContentPane(new ScorePanel());
@@ -191,6 +199,7 @@ public class ScorePanel extends JPanel {
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // MainFrame holen,  neues ModulPanel erzeugen und einklinken.
                 Gui topFrame = Gui.getMainFrame();
                 topFrame.setContentPane(new ModulPanel());
                 topFrame.revalidate();

@@ -9,8 +9,9 @@ import ch.abbts.szmg.scorecalculator.*;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author szobrist
+ * Mit dieser Klasse kann der Notendurchscnitt pro Student, Semester oder Fach
+ * mit Hilfe von Dialogboxen ausgegeben werden.
+ * @author Simon Zobrist
  */
 public class ScoreList {
     
@@ -18,10 +19,16 @@ public class ScoreList {
     private Semester semester;
     private Module module;
     
+    /**
+     * 
+     * @param student Student Studentenobjekt von welchem der Durchscnitt
+     * angezeigt werden soll.
+     */
     public ScoreList(Student student) {
         this.student = student;
         initStudentDialog();
     }
+    // Studentendialog
     private void initStudentDialog() {
         String text = new String();
         text = "<html><b>Notenschnitt pro Semester: </b>";
@@ -36,10 +43,16 @@ public class ScoreList {
         }
 
     }
+    /**
+     * 
+     * @param semester Semester Semesterobjekt von welchem der Durschnitt
+     * angezeigt werden soll.
+     */
     public ScoreList(Semester semester) {
         this.semester = semester;
         initSemesterDialog();
     }
+    // Semester Dialog
     private void initSemesterDialog() {
         String text = new String();
         text = "<html><h2>Semester: " + semester.getName() + "</h2><br><b>Notenschnitt pro Fach:</b>";
@@ -53,13 +66,16 @@ public class ScoreList {
             JOptionPane.showMessageDialog(Gui.getMainFrame(), "Keine Daten vorhanden!", "Fehler", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    
+    /**
+     * 
+     * @param module Modul Modulobjekt von welchem der Durschnitt angezeigt 
+     * werden soll
+     */
     public ScoreList(Module module) {
         this.module = module;
         initModuleDialog();
     }
-    
+    // Modul Dialog
     private void initModuleDialog(){
         String text = new String();
         if(module.getScores() != null && module.getScores().size() > 0){

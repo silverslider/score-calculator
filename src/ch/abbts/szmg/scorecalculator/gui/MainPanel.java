@@ -20,9 +20,7 @@ public class MainPanel extends JPanel {
     public MainPanel() {
         initMainPanel();
     }
-    /*
-     * Methode zum initialisiseren des mainPanels
-     */
+    // Initialisieren des MainPanels
     private void initMainPanel() {
         // Panel für ContentPane erzeugen
         this.setBackground(Color.DARK_GRAY);

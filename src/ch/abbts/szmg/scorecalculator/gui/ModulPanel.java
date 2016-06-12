@@ -149,6 +149,8 @@ public class ModulPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!nameText.getText().equals("")){
+                    
+                    // ModulPanel laden
                     Gui topFrame = Gui.getMainFrame();
                     Module module = new Module(nameText.getText(), descriptionText.getText(), instructorText.getText());
                     topFrame.getSemester().addModule(module);

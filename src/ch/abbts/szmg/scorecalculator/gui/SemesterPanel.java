@@ -12,7 +12,7 @@ import javax.swing.*;
 
 /**
  * Panel zur Verwaltung der Semester
- * @author mg
+ * @author Marc Guidicelli
  */
 public class SemesterPanel extends JPanel {
 
@@ -23,6 +23,7 @@ public class SemesterPanel extends JPanel {
     public SemesterPanel() {
         initSemesterPanel();
     }
+    // SemesterPanel initialisieren
     private void initSemesterPanel() {
         // Panel erzeugen und Grösse definieren
         this.setBackground(Color.DARK_GRAY);
@@ -31,6 +32,9 @@ public class SemesterPanel extends JPanel {
         this.addCenterPanel();
         this.addBottomPanel();
     }
+    /*
+     * Hinzufügen des TopPanels 
+     */
     private void addTopPanel(){
         title = new JLabel("Semester von " + Gui.getMainFrame().getStudent().getFullName());
         title.setForeground(Color.RED);
@@ -59,7 +63,10 @@ public class SemesterPanel extends JPanel {
         topPanel.add(topSubPanel1);
         topPanel.add(topSubPanel2);
         add(topPanel, BorderLayout.NORTH);
-    }    
+    }
+    /*
+     * Hinzufügen des CenterPanels 
+     */
     private void addCenterPanel() {
         JPanel centerPanel = new JPanel(new FlowLayout());
         centerPanel.setBackground(Color.DARK_GRAY);   
@@ -116,7 +123,9 @@ public class SemesterPanel extends JPanel {
         centerPanel.add(semesterList);
         add(centerPanel, BorderLayout.CENTER);
     }
-
+    /*
+     * Hinzufügen des BottomPanels 
+     */
     private void addBottomPanel() {
         // Buttons erzeugen
         save = new JButton("Speichern");
@@ -125,6 +134,8 @@ public class SemesterPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!nameText.getText().equals("")){
+                    
+                    // SemesterPanel laden
                     Gui topFrame = Gui.getMainFrame();
                     Semester semester = new Semester(nameText.getText() ,descriptionText.getText());
                     topFrame.setSemester(semester);
@@ -140,6 +151,7 @@ public class SemesterPanel extends JPanel {
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // MainFrame holen,  neues StudentPanel erzeugen und einklinken.
                 JFrame topFrame = Gui.getMainFrame();
                 topFrame.setContentPane(new StudentPanel());
                 topFrame.revalidate();

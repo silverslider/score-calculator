@@ -9,9 +9,9 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * Das Gui ist das Hauptfenster der grafischen Benutzeroberfläche. Es enthält
- * die Menübar und das mainPanel welches durch die jeweiligen Ansichten ersetzt
- * werden kann.
+ * Die Gui Klasse ist das Hauptfenster der grafischen Benutzeroberfläche. 
+ * Es enthält die Menübar und das mainPanel welches durch die jeweiligen 
+ * Ansichten ersetzt werden kann.
  * @author Marc Guidicelli
  */
 public class Gui extends JFrame {
@@ -31,7 +31,9 @@ public class Gui extends JFrame {
     public Gui() { 
         initGui();
     }
-    // Methoden zum initialisieren des Guis
+    /*
+    * Methode zum Initialisieren des Gui
+    */
     private void initGui() {
         //Objekt apeichern für statischen Aufruf
         mainFrame = this;

@@ -30,7 +30,7 @@ public class TopMenuBar extends JMenuBar {
     public TopMenuBar() {
         initMenuBar();
     }
-    /**
+    /*
      * Initialisiseren der MenuBar
      */
     private void initMenuBar() {
@@ -119,8 +119,8 @@ public class TopMenuBar extends JMenuBar {
         menu = new JMenu("?");
         menuBar.add(menu);
         
-        // Menüeintrag ? -> Über
-        menuItem = new JMenuItem("Über");
+        // Menüeintrag ? -> About
+        menuItem = new JMenuItem("About");
         menu.add(menuItem);
         menuItem.addActionListener(new ActionListener() {
             @Override
@@ -135,6 +135,9 @@ public class TopMenuBar extends JMenuBar {
                         + "     </tr>"
                         + "     <tr>"
                         + "         <td></td><td>Marc Guidicelli</td>"
+                        + "     </tr>"
+                        + "     <tr>"
+                        + "         <td>Version:</td><td>1.0</td>"
                         + "     </tr>"
                         + "</html>";
                 ImageIcon smallRaupe = new ImageIcon("raupe.jpg");

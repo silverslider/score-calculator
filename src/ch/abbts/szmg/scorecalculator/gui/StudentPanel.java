@@ -23,9 +23,12 @@ public class StudentPanel extends JPanel {
     
     private JPanel scrollPanel;
     
+    // Konstruktor für StudentPanel
     public StudentPanel() {
         initStudentPanel();
     }
+    
+    // StudentPanel initialisieren
     private void initStudentPanel() {
         // Panel erzeugen
         this.setBackground(Color.DARK_GRAY);
@@ -34,6 +37,9 @@ public class StudentPanel extends JPanel {
         this.addCenterPanel();
         this.addBottomPanel();
     }
+    /*
+     * Hinzufügen des TopPanels 
+     */
     private void addtopPanel(){
         // GUI Komponenten erzeugen
         title = new JLabel("Student hinzufügen");
@@ -65,7 +71,10 @@ public class StudentPanel extends JPanel {
         topPanel.add(topSubPanel1);
         topPanel.add(topSubPanel2);
         add(topPanel, BorderLayout.NORTH);
-    }    
+    }
+    /*
+     * Hinzufügen des CenterPanels 
+     */
     private void addCenterPanel() {
         JPanel centerPanel = new JPanel(new FlowLayout());
         centerPanel.setBackground(Color.DARK_GRAY);   
@@ -122,6 +131,9 @@ public class StudentPanel extends JPanel {
         centerPanel.add(studentList);
         add(centerPanel, BorderLayout.CENTER);
     }
+    /* 
+     * Hinzufügen des BottomPanels
+     */
     private void addBottomPanel() {
         // Buttons erzeugen
         save = new JButton("Speichern");
@@ -148,6 +160,7 @@ public class StudentPanel extends JPanel {
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // MainFrame holen,  neues MainPanel erzeugen und einklinken.
                 JFrame topFrame = Gui.getMainFrame();
                 topFrame.setContentPane(new MainPanel());
                 topFrame.revalidate();

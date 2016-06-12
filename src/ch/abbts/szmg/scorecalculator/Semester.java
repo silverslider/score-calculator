@@ -54,7 +54,7 @@ public class Semester implements Serializable {
     /**
      * Gibt das Modul anhand des ArraList Index zurück. 
      * @param index int ArrayList index für das Modul. 
-     * @return 
+     * @return tempModule Modul Modulobjekt
      */
     public Module getModule(int index) {
         Module tempModule = null;
