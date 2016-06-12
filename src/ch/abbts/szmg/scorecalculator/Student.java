@@ -70,6 +70,11 @@ public class Student extends Person implements Serializable{
         }
         return tempSemester;
     }
+    /**
+     * Gibt ein Semester anhand des übergebenen Semesters zurück. 
+     * @param semester Semester 
+     * @return Semester
+     */
     public Semester getSemester(Semester semester) {
         Semester tempSemester = null;
         for(Semester element : semesters) {
@@ -79,10 +84,17 @@ public class Student extends Person implements Serializable{
         }
         return tempSemester;
     }
+    /**
+     * Gibt die Semestersammlung (ArrayList of Semester) zurück. 
+     * @return ArrayList of Semester
+     */
     public ArrayList<Semester> getSemesters() {
         return semesters;
     }
-    
+    /**
+     * Löscht das übergebene Semesterobjekt aus der Semester ArrayList. 
+     * @param semester Semester Erwartet das zu löschende Semesterobjekt. 
+     */
     public void removeSemester(Semester semester){
         semesters.remove(semester);
     }  
