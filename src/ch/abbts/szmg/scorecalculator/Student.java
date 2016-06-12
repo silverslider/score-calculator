@@ -38,6 +38,9 @@ public class Student extends Person implements Serializable{
             }
         }
         average = Math.round((sum / semesters.size()) * 10) / 10.0;
+        if (average == 0) {
+            average ++;
+        }
         return average;
     }
     /**

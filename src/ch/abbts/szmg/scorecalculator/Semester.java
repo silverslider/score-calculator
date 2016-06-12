@@ -89,6 +89,9 @@ public class Semester implements Serializable {
             }
         }
         average = Math.round((sum / modules.size()) * 10) / 10.0;
+        if (average == 0) {
+            average ++;
+        }
         return average; 
     }
     /**

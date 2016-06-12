@@ -167,13 +167,22 @@ public class ScorePanel extends JPanel {
                 try{
                     double score = Double.parseDouble(scoreText.getText());
                     int weight = Integer.parseInt(weightText.getText());
-                    Gui topFrame = Gui.getMainFrame();
-                    topFrame.getModule().addScore(score, weight);
-                    topFrame.setContentPane(new ScorePanel());
-                    topFrame.revalidate();
-                    topFrame.repaint();
+                    if ((score >= 1 && score <= 6) && (weight >= 1 && weight <= 100)) {
+                        Gui topFrame = Gui.getMainFrame();
+                        topFrame.getModule().addScore(score, weight);
+                        topFrame.setContentPane(new ScorePanel());
+                        topFrame.revalidate();
+                        topFrame.repaint();
+                    } 
+                    else {
+                        String message = new String(); 
+                        message = "Ungültige Eingabe! \n\nGültiger Wertebereich:\nNote 1.0 bis 6.0\nGewichtung 1 bis 100 ";
+                        JOptionPane.showMessageDialog(null, message, "Eingabe Fehler", JOptionPane.ERROR_MESSAGE);
+                    }
                 }catch(NumberFormatException nfe){
-                    //show an Error
+                    String message = new String(); 
+                    message = "Ungültige Eingabe! \n\nGültiger Wertebereich:\nNote 1.0 bis 6.0\nGewichtung 1 bis 100 ";
+                    JOptionPane.showMessageDialog(null, message, "Eingabe Fehler", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
