@@ -67,7 +67,7 @@ public class MainPanel extends JPanel {
      */
     private void addBottomPanel() {
         // Buttons erzeugen
-        student = new JButton("Student hinzufügen");
+        student = new JButton("Studenten verwalten");
         student.setBackground(Color.orange);
         student.addActionListener(new ActionListener() {
             @Override

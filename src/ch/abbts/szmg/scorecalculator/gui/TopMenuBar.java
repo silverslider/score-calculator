@@ -49,6 +49,11 @@ public class TopMenuBar extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Students.removeStudents();
+                // MainFrame holen,  neues MainPanel erzeugen und einklinken.
+                JFrame topFrame = Gui.getMainFrame();
+                topFrame.setContentPane(new MainPanel());
+                topFrame.revalidate();
+                topFrame.repaint();
             }
         });
         
@@ -85,6 +90,11 @@ public class TopMenuBar extends JMenuBar {
                     Logger.getLogger(TopMenuBar.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null, "Laden fehlgeschlagen");
                 }
+                // MainFrame holen,  neues MainPanel erzeugen und einklinken.
+                JFrame topFrame = Gui.getMainFrame();
+                topFrame.setContentPane(new MainPanel());
+                topFrame.revalidate();
+                topFrame.repaint();
             }
         });
                 
@@ -103,7 +113,7 @@ public class TopMenuBar extends JMenuBar {
         menuBar.add(menu);
         
         // Menüeintrag Aktion -> Student hinzufügen
-        menuItem = new JMenuItem("Student hinzufügen");
+        menuItem = new JMenuItem("Studenten verwalten");
         menu.add(menuItem);
         menuItem.addActionListener(new ActionListener() {
             @Override
