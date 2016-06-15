@@ -43,7 +43,7 @@ public class StudentPanel extends JPanel {
     private void addtopPanel(){
         // GUI Komponenten erzeugen
         title = new JLabel("Student hinzufügen");
-        title.setForeground(Color.RED);
+        title.setForeground(Color.cyan);
         
         preNameLabel = new JLabel("Vorname");
         preNameLabel.setPreferredSize(new Dimension(80, 20));

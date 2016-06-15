@@ -37,8 +37,8 @@ public class ModulPanel extends JPanel {
      */
     private void addTopPanel(){
         //Panel für den North Bereich        
-        title = new JLabel("Student: " + Gui.getMainFrame().getStudent().getFullName() + " im Semester " + Gui.getMainFrame().getSemester().getName());
-        title.setForeground(Color.RED);
+        title = new JLabel("Fächer von " + Gui.getMainFrame().getStudent().getFullName() + " im Semester " + Gui.getMainFrame().getSemester().getName());
+        title.setForeground(Color.CYAN);
         nameLabel = new JLabel("Name");
         nameLabel.setForeground(Color.WHITE);
         nameLabel.setPreferredSize(new Dimension(80, 20));

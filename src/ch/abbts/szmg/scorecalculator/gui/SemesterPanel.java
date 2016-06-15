@@ -37,7 +37,7 @@ public class SemesterPanel extends JPanel {
      */
     private void addTopPanel(){
         title = new JLabel("Semester von " + Gui.getMainFrame().getStudent().getFullName());
-        title.setForeground(Color.RED);
+        title.setForeground(Color.CYAN);
         nameLabel = new JLabel("Name");
         nameLabel.setForeground(Color.WHITE);
         nameLabel.setPreferredSize(new Dimension(80, 20));
@@ -46,11 +46,11 @@ public class SemesterPanel extends JPanel {
         descriptionLabel.setForeground(Color.WHITE);
         descriptionLabel.setPreferredSize(new Dimension(80, 20));
         descriptionText = new JTextField(50);
+
         // Panel für Semester Erfassung
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
         topPanel.setBackground(Color.DARK_GRAY);
-        topPanel.add(title);
         // Sub Panel pro Zeile
         JPanel topSubPanel1 = new JPanel(new FlowLayout());
         topSubPanel1.setBackground(Color.DARK_GRAY);
@@ -60,6 +60,7 @@ public class SemesterPanel extends JPanel {
         topSubPanel2.setBackground(Color.DARK_GRAY);
         topSubPanel2.add(descriptionLabel);
         topSubPanel2.add(descriptionText);
+        topPanel.add(title);
         topPanel.add(topSubPanel1);
         topPanel.add(topSubPanel2);
         add(topPanel, BorderLayout.NORTH);

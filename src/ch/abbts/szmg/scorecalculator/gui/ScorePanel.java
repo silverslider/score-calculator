@@ -36,8 +36,8 @@ public class ScorePanel extends JPanel {
      */
     private void addTopPanel(){
         // Komponenten für Notenerfassung
-        title = new JLabel("Notenspiegel");
-        title.setForeground(Color.RED);
+        title = new JLabel("Notenspiegel von " + Gui.getMainFrame().getStudent().getFullName() + " im Fach " + Gui.getMainFrame().getModule().getName() + " im Semester " + Gui.getMainFrame().getSemester().getName());
+        title.setForeground(Color.CYAN);
         scoreLabel = new JLabel("Note");
         scoreLabel.setForeground(Color.WHITE);
         scoreLabel.setPreferredSize(new Dimension(60, 20));
